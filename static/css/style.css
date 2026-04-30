@@ -297,7 +297,7 @@ nav {
 /* ========== REVEAL AU SCROLL ========== */
 .reveal {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(45px);
     transition: opacity 0.9s cubic-bezier(1.2, 1.9, 1.4, 1.1), transform 0.7s cubic-bezier(1.2, 1.9, 1.4, 1.1);
 }
 
