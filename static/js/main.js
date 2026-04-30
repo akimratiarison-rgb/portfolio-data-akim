@@ -223,3 +223,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // ... les autres initialisations (type, mobileMenu, etc.) ...
     initScrollReveal();  // <-- ajoute cette ligne
 });
+
+

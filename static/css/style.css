@@ -174,7 +174,7 @@ nav {
 #animated-bg,
 .particle {
     will-change: transform;
-    transform: translateZ(0);
+   /* transform: translateZ(0);*/
     backface-visibility: hidden;
 }
 
@@ -239,12 +239,12 @@ nav {
     100% { transform: translate(0, 0) rotate(0deg) scale(1); }
 }
 
-.logo-float:hover {
+/*.logo-float:hover {
     opacity: 0.85 !important;
     transform: scale(1.2) rotate(5deg) !important;
     filter: drop-shadow(0 0 12px #10b981ce) brightness(1.1) !important;
     transition: all 0.15s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
+}*/
 
 .logo-11, .logo-12, .logo-13, .logo-14, .logo-15, .logo-16, .logo-17 {
     animation: floatLogo 30s ease-in-out infinite, gentlePulse 4s ease-in-out infinite alternate;
@@ -294,14 +294,33 @@ nav {
 }*/
 
 /* ========== REVEAL AU SCROLL ========== */
-/* ========== REVEAL AU SCROLL ========== */
 .reveal {
     opacity: 0;
-    transform: translateX(45px);
-    transition: opacity 0.9s cubic-bezier(1.2, 1.9, 1.4, 1.1), transform 0.7s cubic-bezier(1.2, 1.9, 1.4, 1.1);
+    transform: perspective(500px) rotateY(8deg) translateY(20px);
+    transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
-
 .reveal.revealed {
     opacity: 1;
-    transform: translateX(0);
+    transform: perspective(500px) rotateY(0deg) translateY(0);
 }
+
+
+
+
+section h2 {
+    background: linear-gradient(120deg, #f0f0f0, #10b981, #f0f0f0);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradientShift 30s linear infinite; 
+}
+
+.nav-link, .badge-skill {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.nav-link:hover, .badge-skill:hover {
+    background-color: rgba(16, 185, 129, 0.15);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
