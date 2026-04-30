@@ -1,38 +1,32 @@
-// static/js/main.js
-const TYPED_WORDS = ['Python & SQL.', 'Google Analytics.', 'Looker Studio.', 'le Machine Learning.'];
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+// ==========================================
+// EFFET DE TYPING
+// ==========================================
+const TYPED_WORDS = ['à Python & SQL.', 'à Google Analytics.', 'à Looker Studio.', 'au Machine Learning.'];
+let wordIdx = 0, charIdx = 0, isDeleting = false;
 
-function typeEffect() {
-    const typedElement = document.getElementById('typed-text');
-    if (!typedElement) return;
+function type() {
+    const el = document.getElementById('typed-text');
+    if (!el) return;
+    const current = TYPED_WORDS[wordIdx];
     
-    const currentWord = TYPED_WORDS[wordIndex];
-    
-    if (isDeleting) {
-        typedElement.textContent = currentWord.slice(0, charIndex--);
-        if (charIndex < 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % TYPED_WORDS.length;
-            setTimeout(typeEffect, 400);
-            return;
-        }
+    el.textContent = isDeleting ? current.slice(0, charIdx--) : current.slice(0, charIdx++);
+
+    if (!isDeleting && charIdx > current.length) {
+        isDeleting = true;
+        setTimeout(type, 2000);
+    } else if (isDeleting && charIdx < 0) {
+        isDeleting = false;
+        wordIdx = (wordIdx + 1) % TYPED_WORDS.length;
+        charIdx = 0;
+        setTimeout(type, 500);
     } else {
-        typedElement.textContent = currentWord.slice(0, charIndex++);
-        if (charIndex > currentWord.length) {
-            isDeleting = true;
-            setTimeout(typeEffect, 1800);
-            return;
-        }
+        setTimeout(type, isDeleting ? 40 : 80 + Math.random() * 50);
     }
-    
-    // Délais variables (entre 40ms et 120ms) pour un rythme organique
-    const delay = isDeleting ? 35 : 55 + Math.random() * 45;
-    setTimeout(typeEffect, delay);
 }
 
-// Menu burger mobile
+// ==========================================
+// MENU BURGER
+// ==========================================
 function initMobileMenu() {
     const btn = document.getElementById('menu-btn');
     const menu = document.getElementById('mobile-menu');
@@ -43,7 +37,6 @@ function initMobileMenu() {
         menu.classList.toggle('flex');
     });
     
-    // Fermer le menu après clic sur un lien
     const links = menu.querySelectorAll('a');
     links.forEach(link => {
         link.addEventListener('click', () => {
@@ -53,7 +46,9 @@ function initMobileMenu() {
     });
 }
 
-// Smooth scroll pour les ancres
+// ==========================================
+// SMOOTH SCROLL
+// ==========================================
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -68,56 +63,163 @@ function initSmoothScroll() {
     });
 }
 
-// Lazy loading / observation des cartes (effet au scroll)
-function initRevealOnScroll() {
-    const cards = document.querySelectorAll('.card-project');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
+// ========== COMPTEUR ANIMÉ ==========
+function animateNumbers() {
+    const stats = document.querySelectorAll('.stat-number');
+    stats.forEach(stat => {
+        const target = parseInt(stat.dataset.target);
+        if (isNaN(target)) return;
+        
+        let current = 0;
+        const increment = target / 50;
+        let step = 0;
+        const interval = setInterval(() => {
+            current += increment;
+            step++;
+            if (current < target && step < 50) {
+                stat.innerText = Math.floor(current);
+            } else {
+                stat.innerText = target;
+                clearInterval(interval);
             }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(card);
+        }, 30);
     });
 }
 
-// Lancement des scripts
-document.addEventListener('DOMContentLoaded', () => {
-    typeEffect();
-    initMobileMenu();
-    initSmoothScroll();
-    initRevealOnScroll();
-});
-
-
-
-
-// Changement progressif des images de fond au scroll
-function updateBackgroundScroll() {
-    const bg1 = document.getElementById('bg1');
-    const bg2 = document.getElementById('bg2');
-    if (!bg1 || !bg2) return;
-
-    // Hauteur totale scrollable
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    // Position actuelle (0 = tout en haut, 1 = tout en bas)
-    const scrollPercent = window.scrollY / scrollHeight;
-
-    // Opacité de bg2 entre 0 et 1 (0% en haut, 100% en bas)
-    let opacity = Math.min(1, scrollPercent * 1.5); // *1.5 pour arriver plus vite
-    bg2.style.opacity = opacity;
-    bg1.style.opacity = 1 - opacity;
+function initStatsObserver() {
+    const statsContainer = document.querySelector('.stats-container');
+    if (!statsContainer) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateNumbers();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    observer.observe(statsContainer);
 }
 
-// Écoute l'événement scroll
-window.addEventListener('scroll', updateBackgroundScroll);
-// Appel initial
-updateBackgroundScroll();
+// ========== REVEAL DES BADGES (allégé) ==========
+function initTechReveal() {
+    const badges = document.querySelectorAll('.badge-skill, .tech-badge');
+    if (badges.length === 0) return;
+    
+    badges.forEach(badge => {
+        badge.style.opacity = '0';
+        badge.style.transform = 'scale(0.8)';
+        badge.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    });
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const targets = entry.target.querySelectorAll('.badge-skill, .tech-badge');
+                targets.forEach(badge => {
+                    badge.style.opacity = '1';
+                    badge.style.transform = 'scale(1)';
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    const sections = document.querySelectorAll('#projets, #competences, .card-project');
+    sections.forEach(section => {
+        if (section.querySelectorAll('.badge-skill, .tech-badge').length) {
+            observer.observe(section);
+        }
+    });
+    
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+            const targets = section.querySelectorAll('.badge-skill, .tech-badge');
+            targets.forEach(badge => {
+                badge.style.opacity = '1';
+                badge.style.transform = 'scale(1)';
+            });
+        }
+    });
+}
+
+
+
+// ========== INITIALISATION ==========
+document.addEventListener('DOMContentLoaded', () => {
+    type();
+    initMobileMenu();
+    initSmoothScroll();
+    initStatsObserver();
+    initTechReveal();
+    initNameSoftGlow();
+});
+
+// ==========================================
+// MENU BURGER 
+// ==========================================
+function initMobileMenu() {
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+    
+    btn.addEventListener('click', () => {
+        // Toggle l'affichage du menu
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+        
+        // Toggle la classe 'active' sur le bouton burger 
+        btn.classList.toggle('active');
+    });
+    
+    // Fermer le menu automatiquement après un clic sur un lien
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.add('hidden');
+            menu.classList.remove('flex');
+            btn.classList.remove('active');   
+        });
+    });
+}
+
+
+// ========== REVEAL AU SCROLL (sauf les stats) ==========
+function initScrollReveal() {
+    // Sélectionne tout le contenu à animer (sauf .stats-container)
+    const elementsToReveal = document.querySelectorAll(
+        '#hero, #hero img, .card-project, .certif-item, #competences .group'
+    );
+    
+    if (elementsToReveal.length === 0) return;
+    
+    // Ajoute la classe 'reveal' à chaque élément (s'il ne l'a pas déjà)
+    elementsToReveal.forEach(el => {
+        if (!el.classList.contains('stats-container')) {
+            el.classList.add('reveal');
+        }
+    });
+    
+    // Crée un observateur
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target); // Une fois révélé, on arrête de surveiller
+            }
+        });
+    }, { threshold: 0.5 }); // Déclenche quand 5% de l'élément est visible
+    
+    // Observe chaque élément
+    document.querySelectorAll('.reveal').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Lance l'animation au chargement (déjà dans DOMContentLoaded, on ajoute la fonction)
+document.addEventListener('DOMContentLoaded', () => {
+    // ... les autres initialisations (type, mobileMenu, etc.) ...
+    initScrollReveal();  // <-- ajoute cette ligne
+});

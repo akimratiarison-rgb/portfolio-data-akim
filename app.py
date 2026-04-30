@@ -14,7 +14,7 @@ PROJETS = [
         "technos": ["Python", "Scikit-learn", "Pandas"],
         "lien": "#",
         "emoji": "🤖",
-        "highlight": True   # pour l'asymétrie
+        "highlight": True   
     },
     {
         "titre": "Régression Linéaire – Prix Immo",
@@ -51,33 +51,33 @@ PROJETS = [
 ]
 
 # ============================================
-# MAINTENANCE : Ajoutez vos certifications ici
+# MAINTENANCE : Ajout certifications ici
 # ============================================
 CERTIFICATIONS = [
     {
-        "titre": "Python for Data Science & AI",
-        "organisme": "IBM · Coursera",
-        "date": "2024",
+        "titre": "Data Analyst : Career Preparation ",
+        "organisme": "IBM",
+        "date": "2026",
         "badge": "🏅",
-        "lien": "#",
-        "image": "cert.jpg"
+        "lien": "https://cognitiveclass.ai/certificates/384230bc-e72f-4a37-add0-7f91c265d03b",
+        "image": "ibm-cert.png"
         
     },
     {
         "titre": "Google Analytics Certification",
         "organisme": "Google",
-        "date": "2024 – 2027",
+        "date": "2026 – 2027",
         "badge": "🎯",
-        "lien": "#",
-        "image": "cert.jpg"
+        "lien": "https://skillshop.credential.net/f26e5ea6-86df-4e7d-abaf-af094291bed3?record_view=true",
+        "image": "google-analytics-badge.png"
     },
     {
-        "titre": "Azure Data Fundamentals (DP-900)",
-        "organisme": "Microsoft",
-        "date": "2025",
+        "titre": "JavaScript Certification (Problem Solving)",
+        "organisme": "CodinGame",
+        "date": "2026",
         "badge": "☁️",
-        "lien": "#",
-        "image": "cert.jpg"
+        "lien": "https://www.codingame.com/certification/IM6f_CS7i578DpWklLug0w",
+        "image": "js.png"
     }
 ]
 
@@ -90,7 +90,7 @@ COMPETENCES = {
     "Analytics & BI": ["Google Analytics 4", "Power BI"],
     "Data Warehousing & Cloud": ["BigQuery", "Snowflake", "DBT"],
     "DevOps & Environnement": ["Docker", "Git", "GitHub", "VS Code"],
-    "Autre": ["Web Scraping"]
+    "Collection de données": ["Web Scraping"]
 }
 
 @app.route("/")
@@ -98,4 +98,4 @@ def index():
     return render_template("index.html", projets=PROJETS, certifs=CERTIFICATIONS, competences=COMPETENCES)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

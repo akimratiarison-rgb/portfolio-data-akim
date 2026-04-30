@@ -1,162 +1,307 @@
-/* static/css/style.css - Version améliorée */
-
-
-/* Rendu des polices plus net */
-body {
-
+/* ========== BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background: linear-gradient(135deg, #030712 0%, #0a0f1a 100%);
-   /* background: linear-gradient(135deg, #35509b 0%, #424853 100%);*/
-    color: #e5e7eb;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
 
-/* === Typographie plus lisible === */
-h1, h2, h3, .font-bebas {
-    letter-spacing: 0.02em;
+/* ========== STYLE UNIFORME POUR TOUTES LES CARTES ========== */
+.card-project,
+#competences .group > div,
+.certif-item {
+    background-color: rgba(17, 24, 39, 0.75);
+    backdrop-filter: blur(2px);
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.card-project:hover,
+#competences .group > div:hover,
+.certif-item:hover {
+    background-color: rgba(31, 41, 55, 0.85);
+    transform: translateY(-2px);
+}
+
+/* ========== BADGES ========== */
+.badge-skill,
+.tech-badge {
+    background-color: rgba(55, 65, 81, 0.8);
+    color: #e5e7eb;
+    padding: 4px 12px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    font-family: 'Inter', 'Segoe UI', sans-serif, monospace;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.badge-skill:hover,
+.tech-badge:hover {
+    background-color: #10b981c2;
+    color: white;
+    border-color: #10b981c2;
+    transform: translateY(-1px);
+}
+
+/* ========== CERTIFICATIONS ========== */
+.certif-item {
+    border-radius: 16px;
+    margin-bottom: 4px;
+}
+
+/* ========== TEXTE ========== */
+h1, h2, h3, h4, p, li, span, a, .text-muted {
+    color: #f0f0f0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .text-muted {
-    color: #9ca3af;
+    color: #9ca3af !important;
 }
 
-/* Carte projet plus subtile  */
-.card-project .bg-card-bg\/80 {
-    background: rgba(17, 24, 39, 0.7);
-    backdrop-filter: blur(12px);
+/* ========== LIENS NAVBAR ========== */
+.nav-link {
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+    color: #f0f0f0e8;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #10b981, #34d399);
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #10b981 !important;
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #059669;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+nav {
+    animation: slideDown 0.8s ease-out forwards;
+}
+
+/* ========== PARTICULES (allégées) ========== */
+.particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(8px);
+}
+
+.particle-1 { width: 150px; height: 150px; top: 10%; left: -100px; animation: floatParticle 20s ease-in-out infinite alternate; }
+.particle-2 { width: 120px; height: 120px; bottom: 5%; right: -80px; animation: floatParticle 25s ease-in-out infinite alternate reverse; }
+.particle-3 { width: 80px; height: 80px; top: 40%; left: 60%; animation: floatParticle 15s ease-in-out infinite alternate 2s; }
+.particle-4 { width: 200px; height: 200px; bottom: 20%; left: 20%; animation: floatParticle 30s ease-in-out infinite alternate 1s; }
+
+@keyframes floatParticle {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+    100% { transform: translate(60px, 40px) scale(1.3); opacity: 0; }
+}
+
+/* Effet glow au survol des cartes */
+.card-project {
+    position: relative;
+    overflow: hidden;
     transition: all 0.3s ease;
 }
 
-.card-project:hover .bg-card-bg\/80 {
-    background: rgba(31, 41, 55, 0.8);
-    transform: translateY(-4px);
+.card-project::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.2), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
 }
 
-/*Badge skill amélioré */
-.badge-skill {
-    @apply text-[11px] font-mono uppercase bg-gray-800/50 border border-gray-700 px-3 py-1 rounded-full text-gray-300;
-    transition: all 0.2s;
+.card-project:hover::before {
+    left: 100%;
 }
 
-.badge-skill:hover {
-    @apply border-accent/60 text-accent bg-accent/10;
+/* Accélération matérielle pour les éléments animés (sauf nav) */
+.card-project,
+#competences .group > div,
+.certif-item,
+#animated-bg,
+.particle {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
-/* Animation de la photo */
-@keyframes fadeSlideIn {
-    from {
-        opacity: 0;
-        transform: translateX(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+nav {
+    will-change: auto;
 }
 
-#hero img {
-    animation: fadeSlideIn 0.8s ease-out;
+/* ========== LOGOS FLOTTANTS ========== */
+.floating-logos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
 }
 
-/* Scrollbar personnalisée*/
-::-webkit-scrollbar {
-    width: 6px;
-}
-::-webkit-scrollbar-track {
-    background: #111827;
-}
-::-webkit-scrollbar-thumb {
-    background: #dab24f;
-    border-radius: 10px;
+.logo-float {
+    position: absolute;
+    opacity: 0.12;
+    animation: floatLogo 25s ease-in-out infinite;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    pointer-events: auto;
 }
 
-/* === Suppression du grain overlay (optionnel) === */
-.grain-overlay {
-    display: none;
+.logo-float img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.2));
+    transition: all 0.2s ease;
 }
 
-/* Icône feuille animée  
-.feuille-animee {
-    color: #4ade80;  
-    animation: feuilleMagique 3s ease-in-out infinite;
+/* Positions */
+.logo-1 { top: 8%; left: 2%; animation-duration: 22s; }
+.logo-2 { top: 25%; left: 1%; animation-duration: 19s; animation-delay: 1s; }
+.logo-3 { top: 45%; left: 3%; animation-duration: 26s; animation-delay: 2s; }
+.logo-4 { top: 65%; left: 0%; animation-duration: 21s; animation-delay: 0.5s; }
+.logo-5 { top: 85%; left: 2%; animation-duration: 24s; animation-delay: 1.5s; }
+
+.logo-6 { top: 12%; right: 2%; animation-duration: 23s; animation-delay: 1s; }
+.logo-7 { top: 30%; right: 1%; animation-duration: 18s; animation-delay: 2.5s; }
+.logo-8 { top: 50%; right: 3%; animation-duration: 27s; animation-delay: 0.3s; }
+.logo-9 { top: 70%; right: 0%; animation-duration: 20s; animation-delay: 1.8s; }
+.logo-10 { top: 90%; right: 2%; animation-duration: 24s; animation-delay: 0s; }
+
+.logo-11 { top: 18%; left: 25%; opacity: 0.06; animation-duration: 28s; }
+.logo-12 { top: 40%; left: 40%; opacity: 0.01; animation-duration: 30s; animation-delay: 2s; }
+.logo-13 { top: 60%; left: 55%; opacity: 0.06; animation-duration: 26s; animation-delay: 1s; }
+.logo-14 { top: 80%; left: 35%; opacity: 0.05; animation-duration: 29s; animation-delay: 0.5s; }
+.logo-15 { top: 60%; right: 30%; opacity: 0.1; animation-duration: 27s; animation-delay: 1.2s; }
+.logo-16 { top: 48%; right: 65%; opacity: 0.01; animation-duration: 31s; animation-delay: 0.8s; }
+.logo-17 { top: 75%; right: 25%; opacity: 0.06; animation-duration: 25s; animation-delay: 2.2s; }
+
+@keyframes floatLogo {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    33% { transform: translate(12px, -18px) rotate(4deg) scale(1.02); }
+    66% { transform: translate(-8px, 12px) rotate(-2deg) scale(0.98); }
+    100% { transform: translate(0, 0) rotate(0deg) scale(1); }
 }
 
-@keyframes feuilleMagique {
-    0% {
-        color: #4ade80;   
-        transform: rotate(0deg) scale(1);
-    }
-    25% {
-        color: #fbbf24;   
-        transform: rotate(5deg) scale(1.1);
-    }
-    50% {
-        color: #f97316;   
-        transform: rotate(-5deg) scale(1.05);
-    }
-    75% {
-        color: #a855f7;   
-        transform: rotate(3deg) scale(1);
-    }
-    100% {
-        color: #4ade80;
-        transform: rotate(0deg) scale(1);
-    }
-}*.bg-card-bg\/80
-
-/* Animation de cahier qui tourne les pages */
-
-.feuilletage-anime {
-    display: inline-block;
-    animation: secousse 0.8s ease-in-out infinite, changeCouleur 2s infinite;
+.logo-float:hover {
+    opacity: 0.85 !important;
+    transform: scale(1.2) rotate(5deg) !important;
+    filter: drop-shadow(0 0 12px #10b981ce) brightness(1.1) !important;
+    transition: all 0.15s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
-@keyframes secousse {
-    0% { transform: rotate(0deg) translateX(0px); }
-    25% { transform: rotate(4deg) translateX(2px); }
-    50% { transform: rotate(-3deg) translateX(-1px); }
-    75% { transform: rotate(2deg) translateX(1px); }
-    100% { transform: rotate(0deg) translateX(0px); }
+.logo-11, .logo-12, .logo-13, .logo-14, .logo-15, .logo-16, .logo-17 {
+    animation: floatLogo 30s ease-in-out infinite, gentlePulse 4s ease-in-out infinite alternate;
+}
+@keyframes gentlePulse {
+    0% { opacity: 0.04; filter: drop-shadow(0 0 2px rgba(16,185,129,0.1)); }
+    100% { opacity: 0.12; filter: drop-shadow(0 0 10px rgba(16,185,129,0.3)); }
 }
 
-@keyframes changeCouleur {
-    0% { filter: drop-shadow(0 0 0px #fbbf24); }
-    50% { filter: drop-shadow(0 0 3px #f97316); }
-    100% { filter: drop-shadow(0 0 0px #fbbf24); }
+/* ========== ANIMATION BURGER VERS X ========== */
+.hamburger-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* Animation douce du background (zoom infini) */
-body {
-    animation: subtleZoom 20s ease-in-out infinite alternate;
+.hamburger-icon span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: currentColor;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes subtleZoom {
-    0% {
-        background-size: 100% auto;
-    }
-    100% {
-        background-size: 110% auto;
-    }
+/* État actif (X) */
+#menu-btn.active .hamburger-icon span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+#menu-btn.active .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+#menu-btn.active .hamburger-icon span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
 }
 
-/* Améliore la lisibilité du texte sur fond sombre */
-h1, h2, h3, p, a, .text-muted {
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+/*footer {
+    background-color: rgba(68, 67, 67, 0.795) !important;   
+    color: white !important;
+    position: relative;
+    z-index: 100;
+}*/
+
+/* ========== REVEAL AU SCROLL ========== */
+/* ========== REVEAL AU SCROLL ========== */
+.reveal {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.9s cubic-bezier(1.2, 1.9, 1.4, 1.1), transform 0.7s cubic-bezier(1.2, 1.9, 1.4, 1.1);
 }
 
-.card-project, .certif-item, nav, footer {
-    backdrop-filter: blur(4px);
-    background-color: rgba(0, 0, 0, 0.215);
-}
-
-.badge-skill {
-    background-color: #1e293b;
-    color: #f3f3ee;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
+.reveal.revealed {
+    opacity: 1;
+    transform: translateX(0);
 }
