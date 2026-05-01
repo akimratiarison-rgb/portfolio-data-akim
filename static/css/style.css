@@ -119,8 +119,6 @@ h1, h2, h3, h4, p, li, span, a, .text-muted {
     to { opacity: 1; transform: translateY(0); }
 }
 
-
-
 nav {
     animation: slideDown 0.8s ease-out forwards;
 }
@@ -174,7 +172,6 @@ nav {
 #animated-bg,
 .particle {
     will-change: transform;
-   /* transform: translateZ(0);*/
     backface-visibility: hidden;
 }
 
@@ -239,13 +236,6 @@ nav {
     100% { transform: translate(0, 0) rotate(0deg) scale(1); }
 }
 
-/*.logo-float:hover {
-    opacity: 0.85 !important;
-    transform: scale(1.2) rotate(5deg) !important;
-    filter: drop-shadow(0 0 12px #10b981ce) brightness(1.1) !important;
-    transition: all 0.15s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}*/
-
 .logo-11, .logo-12, .logo-13, .logo-14, .logo-15, .logo-16, .logo-17 {
     animation: floatLogo 30s ease-in-out infinite, gentlePulse 4s ease-in-out infinite alternate;
 }
@@ -286,14 +276,7 @@ nav {
     transform: translateY(-11px) rotate(-45deg);
 }
 
-/*footer {
-    background-color: rgba(68, 67, 67, 0.795) !important;   
-    color: white !important;
-    position: relative;
-    z-index: 100;
-}*/
-
-/* ========== REVEAL AU SCROLL ========== */
+/* ========== REVEAL AU SCROLL (sauf #a-propos) ========== */
 .reveal {
     opacity: 0;
     transform: perspective(500px) rotateY(8deg) translateY(20px);
@@ -304,18 +287,21 @@ nav {
     transform: perspective(500px) rotateY(0deg) translateY(0);
 }
 
-
-
-
+/* Titres de section avec dégradé animé */
 section h2 {
     background: linear-gradient(120deg, #f0f0f0, #10b981, #f0f0f0);
     background-size: 200% auto;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    animation: gradientShift 30s linear infinite; 
+    animation: gradientShift 30s linear infinite;
+}
+@keyframes gradientShift {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
 }
 
+/* Survol des liens et badges */
 .nav-link, .badge-skill {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -324,3 +310,81 @@ section h2 {
     box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
 }
 
+/* ========== SECTION À PROPOS (version unique) ========== */
+#a-propos {
+    background: linear-gradient(135deg, rgba(0,0,0,0.48), rgba(0,0,0,0.3));
+    backdrop-filter: blur(2px);
+    border-radius: 2rem;
+    margin: 2rem 0;
+    transform-origin: 50% 0%;
+    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+#a-propos .rounded-full {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#a-propos h2 {
+    background: linear-gradient(120deg, #f0f0f0, #10b981);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+    text-shadow: none;
+}
+
+#a-propos p {
+    color: #f3f4f6 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Animation swing (activée par JS) */
+#a-propos.swing {
+    animation: swing 3s ease-in-out 3;
+}
+@keyframes swing {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(-1deg); }
+    75% { transform: rotate(0.5deg); }
+    100% { transform: rotate(0deg); }
+}
+#a-propos:hover {
+    animation-play-state: paused;
+}
+
+/* ========== CONTENEUR PENDULAIRE ========== */
+.swing-container {
+    position: relative;
+    margin-top: 2rem;
+    overflow: visible;   /* important pour ne pas cacher la corde */
+}
+
+/* Corde fine et centrée */
+.rope {
+    position: absolute;
+    top: -25px;              /* hauteur au-dessus du bloc */
+    left: 50%;
+    width: 1px;              /* fine */
+    height: 25px;            
+    background: #c2c2c2a2;     /* gris discret */
+    transform: translateX(-50%);
+    z-index: 10;
+    border-radius: 1px;
+    box-shadow: none;        /* enlève l'ombre épaisse */
+}
+
+/* Petit anneau (nœud) – optionnel mais plus discret */
+.rope::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: -3px;
+    width: 7px;
+    height: 7px;
+    background: #c2c2c2a2;     /* gris discret */
+    background: ;
+    border-radius: 50%;
+}

@@ -1,11 +1,11 @@
 // ==========================================
-// EFFET DE TYPING
+// EFFET DE TYPING (hero)
 // ==========================================
 const TYPED_WORDS = ['à Python & SQL.', 'à Google Analytics.', 'à Looker Studio.', 'au Machine Learning.'];
 let wordIdx = 0, charIdx = 0, isDeleting = false;
 
 function type() {
-    const el = document.getElementById('typed-text');
+    const el = document.getElementById('typed-text'); 
     if (!el) return;
     const current = TYPED_WORDS[wordIdx];
     
@@ -25,7 +25,7 @@ function type() {
 }
 
 // ==========================================
-// MENU BURGER
+// MENU BURGER (animation en X)
 // ==========================================
 function initMobileMenu() {
     const btn = document.getElementById('menu-btn');
@@ -35,6 +35,7 @@ function initMobileMenu() {
     btn.addEventListener('click', () => {
         menu.classList.toggle('hidden');
         menu.classList.toggle('flex');
+        btn.classList.toggle('active');
     });
     
     const links = menu.querySelectorAll('a');
@@ -42,6 +43,7 @@ function initMobileMenu() {
         link.addEventListener('click', () => {
             menu.classList.add('hidden');
             menu.classList.remove('flex');
+            btn.classList.remove('active');
         });
     });
 }
@@ -102,7 +104,7 @@ function initStatsObserver() {
     observer.observe(statsContainer);
 }
 
-// ========== REVEAL DES BADGES (allégé) ==========
+// ========== REVEAL DES BADGES ==========
 function initTechReveal() {
     const badges = document.querySelectorAll('.badge-skill, .tech-badge');
     if (badges.length === 0) return;
@@ -145,9 +147,113 @@ function initTechReveal() {
     });
 }
 
+// ========== GLOW DOUX SUR LE NOM (navbar) ==========
+function initNameSoftGlow() {
+    const nameSpan = document.querySelector('nav .font-sans.text-base.md\\:text-xl');
+    if (!nameSpan) return;
+    let glowActive = false;
+    setInterval(() => {
+        if (!glowActive) {
+            glowActive = true;
+            nameSpan.style.transition = 'text-shadow 0.2s ease, color 0.2s ease';
+          
+            setTimeout(() => {
+                nameSpan.style.textShadow = '';
+                nameSpan.style.color = '';
+                glowActive = false;
+            }, 400);
+        }
+    }, 3000);
+}
 
+// ========== REVEAL AU SCROLL (sauf #a-propos) ==========
+function initScrollReveal() {
+    const elementsToReveal = document.querySelectorAll(
+        '#hero, #hero img, .card-project, .certif-item, #competences .group'
+    );
+    if (elementsToReveal.length === 0) return;
+    
+    elementsToReveal.forEach(el => {
+        if (!el.classList.contains('stats-container')) {
+            el.classList.add('reveal');
+        }
+    });
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    document.querySelectorAll('.reveal').forEach(el => {
+        observer.observe(el);
+    });
+}
 
-// ========== INITIALISATION ==========
+// ========== EFFET TYPING + SWING POUR LA SECTION À PROPOS ==========
+function initAProposTyping() {
+    const section = document.querySelector('#a-propos');
+    if (!section) return;
+
+    const paragraphs = section.querySelectorAll('.typed-paragraph');
+    if (paragraphs.length === 0) return;
+
+    let alreadyTyped = false;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !alreadyTyped) {
+                alreadyTyped = true;
+                // Démarrer le balancement immédiatement
+                if (!section.classList.contains('swing')) {
+                    section.classList.add('swing');
+                }
+                // Démarrer l'écriture progressive
+                typeParagraphs(paragraphs, 0);
+                observer.unobserve(section);
+            }
+        });
+    }, { threshold: 0.2 });
+    observer.observe(section);
+}
+
+function typeParagraphs(paragraphs, index) {
+    // Tous les paragraphes terminés → arrêter le swing après un court délai
+    if (index >= paragraphs.length) {
+        const section = document.querySelector('#a-propos');
+        if (section && section.classList.contains('swing')) {
+            setTimeout(() => {
+                section.classList.remove('swing');
+            }, 500);
+        }
+        return;
+    }
+
+    const p = paragraphs[index];
+    const text = p.getAttribute('data-text');
+    if (!text) {
+        setTimeout(() => typeParagraphs(paragraphs, index + 1), 100);
+        return;
+    }
+
+    p.textContent = '';
+    let i = 0;
+    const interval = setInterval(() => {
+        if (i < text.length) {
+            p.textContent += text.charAt(i);
+            i++;
+        } else {
+            clearInterval(interval);
+            setTimeout(() => {
+                typeParagraphs(paragraphs, index + 1);
+            }, 300);
+        }
+    }, 20);
+}
+
+// ========== INITIALISATION UNIQUE ==========
 document.addEventListener('DOMContentLoaded', () => {
     type();
     initMobileMenu();
@@ -155,73 +261,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initStatsObserver();
     initTechReveal();
     initNameSoftGlow();
+    initScrollReveal();
+    initAProposTyping();   // ← lance le typing + swing
 });
-
-// ==========================================
-// MENU BURGER 
-// ==========================================
-function initMobileMenu() {
-    const btn = document.getElementById('menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    if (!btn || !menu) return;
-    
-    btn.addEventListener('click', () => {
-        // Toggle l'affichage du menu
-        menu.classList.toggle('hidden');
-        menu.classList.toggle('flex');
-        
-        // Toggle la classe 'active' sur le bouton burger 
-        btn.classList.toggle('active');
-    });
-    
-    // Fermer le menu automatiquement après un clic sur un lien
-    const links = menu.querySelectorAll('a');
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            menu.classList.add('hidden');
-            menu.classList.remove('flex');
-            btn.classList.remove('active');   
-        });
-    });
-}
-
-
-// ========== REVEAL AU SCROLL (sauf les stats) ==========
-function initScrollReveal() {
-    // Sélectionne tout le contenu à animer (sauf .stats-container)
-    const elementsToReveal = document.querySelectorAll(
-        '#hero, #hero img, .card-project, .certif-item, #competences .group'
-    );
-    
-    if (elementsToReveal.length === 0) return;
-    
-    // Ajoute la classe 'reveal' à chaque élément (s'il ne l'a pas déjà)
-    elementsToReveal.forEach(el => {
-        if (!el.classList.contains('stats-container')) {
-            el.classList.add('reveal');
-        }
-    });
-    
-    // Crée un observateur
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                observer.unobserve(entry.target); // Une fois révélé, on arrête de surveiller
-            }
-        });
-    }, { threshold: 0.5 }); // Déclenche quand 5% de l'élément est visible
-    
-    // Observe chaque élément
-    document.querySelectorAll('.reveal').forEach(el => {
-        observer.observe(el);
-    });
-}
-
-// Lance l'animation au chargement (déjà dans DOMContentLoaded, on ajoute la fonction)
-document.addEventListener('DOMContentLoaded', () => {
-    // ... les autres initialisations (type, mobileMenu, etc.) ...
-    initScrollReveal();  // <-- ajoute cette ligne
-});
-
-

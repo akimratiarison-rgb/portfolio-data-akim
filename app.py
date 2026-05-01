@@ -84,7 +84,7 @@ CERTIFICATIONS = [
 # SECTION COMPÉTENCES
 COMPETENCES = {
     "Langages de programmation": ["Python", "JavaScript", "SQL", "Dart", "Rust"],
-    "Librairies & Frameworks Python": ["NumPy", "Pandas", "Polars", "Matplotlib", "Scikit-learn", "ReportLab", "BeautifulSoup", "Flask", "Streamlit", "Jinja2"],
+    "Librairies & Frameworks Python": ["NumPy", "Pandas", "Polars","Scrapy", "Matplotlib", "Scikit-learn", "ReportLab", "BeautifulSoup", "Flask", "Streamlit", "Jinja2"],
     "Machine Learning & Deep Learning": ["KNN", "Régression linéaire multiple", "GridSearchCV", "Deep Learning"],
     "Frontend": ["React.js", "Flutter", "HTML", "CSS", "Tailwind CSS"],
     "Analytics & BI": ["Google Analytics 4", "Power BI"],
