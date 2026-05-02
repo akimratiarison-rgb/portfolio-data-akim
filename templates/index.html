@@ -1,188 +1,156 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- HERO SECTION -->
-<section id="hero" class="min-h-[90vh] flex items-center relative py-16 md:py-0">
-    <div class="grid md:grid-cols-2 gap-18 lg:gap-30 xl:gap-48 items-center">
-        <!-- Texte à gauche -->
-        <div class="space-y-6 order-2 md:order-1">
-            <p class="text-accent font-mono text-sm tracking-[0.3em] uppercase">Junior Data Analyst & AI Student</p>
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bebas leading-[1.1] tracking-tight">
-                TURNING <br>
-                <span class="text-gray-500">DATA INTO</span><br>
-                INSIGHTS<span class="text-accent">.</span>
-            </h1>
-            <p class="text-muted text-base md:text-xl max-w-lg pt-2">
-                Je suis Akim. Je prends vos données, les analyse et les transforme en insights clairs et actionnables pour vous aider à prendre les meilleures décisions. <br> Grâce 
-                <span id="typed-text" class="text-white font-mono border-r-2 border-accent pr-1"></span>
-            </p>
-            <div class="flex gap-6 pt-4">
-                <a href="#projets" class="inline-flex items-center gap-2 border border-white/80 text-white/90 font-mono text-sm px-6 py-3 rounded-full hover:bg-white/50 hover:text-black transition-all duration-300">
-                    Contacter moi
-                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-
-        <!-- Photo à droite -->
-        <div class="order-1 md:order-2 flex justify-center md:justify-end">
-            <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-accent/30 shadow-2xl shadow-accent/20">
-                <img src="{{ url_for('static', filename='images/akim.jpg') }}" alt="Akim Ratiarison" class="w-full h-full object-cover">
-            </div>
+<!-- Hero section (photo à droite) -->
+<section id="hero" class="flex flex-col md:flex-row justify-between items-center gap-10 pt-4 reveal">
+    <div class="flex-1 space-y-5">
+        <p class="text-accent text-xl uppercase tracking-wider font-mono">Junior Data Analyst & AI Student</p>
+        <h1 class="text-5xl md:text-7xl font-bold leading-tight text-white">
+            TURNING <br>
+            <span class="text-gray-500">DATA INTO</span><br>
+            INSIGHTS<span class="text-accent">.</span>
+        </h1>
+        <p class="text-gray-400 text-lg max-w-lg">
+            Je suis Akim. Je prends vos données, les analyse et les transforme en insights clairs et actionnables.<br>
+            Grâce <span id="typed-text" class="font-mono border-r-2 border-accent"></span>
+        </p>
+        <a href="#projets" class="inline-flex items-center gap-2 bg-accent/10 backdrop-blur-sm border border-accent/30 text-accent px-6 py-3 rounded-full hover:bg-accent/20 transition">
+            Voir les projets
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+        </a>
+    </div>
+    <div class="flex-1 flex justify-center">
+        <div class="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accent/30 shadow-2xl shadow-accent/10">
+            <img src="{{ url_for('static', filename='images/akim.jpg') }}" alt="Akim" class="w-full h-full object-cover">
         </div>
     </div>
 </section>
 
-
-<!-- STATISTIQUES -->
-<div class="stats-container flex justify-center gap-12 py-8">
-    <div class="text-center">
-        <div class="stat-number text-3xl font-bold text-accent" data-target="5">0</div>
-        <p class="text-muted text-sm">Projets</p>
-    </div>
-    <div class="text-center">
-        <div class="stat-number text-3xl font-bold text-accent" data-target="8">0</div>
-        <p class="text-muted text-sm">Catégories</p>
-    </div>
-    <div class="text-center">
-        <div class="stat-number text-3xl font-bold text-accent" data-target="30">0</div>
-        <p class="text-muted text-sm">Technologies</p>
-    </div>
+<!-- Statistiques (5,8,30) -->
+<div class="grid grid-cols-3 gap-4 text-center py-12 border-y border-white/10 my-12 reveal">
+    <div><div class="stat-number text-4xl font-bold text-accent" data-target="5">0</div><p class="text-gray-500">Projets</p></div>
+    <div><div class="stat-number text-4xl font-bold text-accent" data-target="8">0</div><p class="text-gray-500">Catégories</p></div>
+    <div><div class="stat-number text-4xl font-bold text-accent" data-target="30">0</div><p class="text-gray-500">Technologies</p></div>
 </div>
 
-<!-- SECTION PROJETS -->
-<section id="projets" class="py-24 scroll-mt-24">
-    <div class="flex flex-wrap justify-between items-end border-b border-white/10 pb-6 mb-12">
-        <h2 class="text-4xl md:text-5xl font-bebas tracking-wide">Projets Sélectionnés</h2>
-        <span class="text-muted text-sm font-mono hidden md:block">2025 — 2026</span>
+<!-- Expertise (barres de progression) -->
+<section id="expertise" class="py-16 reveal">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Expertise</h2>
+    <div class="max-w-2xl mx-auto space-y-6">
+        <div><div class="flex justify-between mb-1"><span>Python & Data Analysis</span><span>90%</span></div><div class="w-full bg-gray-800 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width:90%"></div></div></div>
+        <div><div class="flex justify-between mb-1"><span>SQL (PostgreSQL, BigQuery)</span><span>85%</span></div><div class="w-full bg-gray-800 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width:85%"></div></div></div>
+        <div><div class="flex justify-between mb-1"><span>Machine Learning</span><span>75%</span></div><div class="w-full bg-gray-800 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width:75%"></div></div></div>
+        <div><div class="flex justify-between mb-1"><span>Data Visualisation</span><span>80%</span></div><div class="w-full bg-gray-800 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width:80%"></div></div></div>
+        <div><div class="flex justify-between mb-1"><span>Cloud & DevOps</span><span>70%</span></div><div class="w-full bg-gray-800 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width:70%"></div></div></div>
     </div>
+</section>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
+<!-- Projets (grille 2 colonnes, catégorie DATA SCIENCE) -->
+<section id="projets" class="py-16 reveal">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Projets Sélectionnés</h2>
+    <div class="grid md:grid-cols-2 gap-8">
         {% for projet in projets %}
-        <div class="card-project group transition-all duration-500 hover:z-10">
-            <div class="bg-card-bg/80 backdrop-blur-sm border border-white/10 rounded-xl p-6 h-full hover:border-accent/40 transition-all">
-                <div class="text-3xl mb-5">{{ projet.emoji }}</div>
-                <h3 class="text-xl font-bold uppercase tracking-wide mb-3 group-hover:text-accent transition">{{ projet.titre }}</h3>
-                <p class="text-muted text-sm leading-relaxed mb-5">{{ projet.description }}</p>
-                <div class="flex flex-wrap gap-2 mb-6">
-                    {% for tech in projet.technos %}
-                    <span class="badge-skill">{{ tech }}</span>
-                    {% endfor %}
-                </div>
-                <a href="{{ projet.lien }}" class="inline-flex items-center text-xs font-mono text-accent gap-1 group-hover:gap-2 transition-all">
-                    Explorer →
-                </a>
+        <div class="bg-card border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:border-accent/40 transition-all group">
+            <!-- <div class="text-4xl mb-3">{{ projet.emoji }}</div> -->
+            <div class="text-sm font-mono text-accent mb-2 uppercase tracking-wider"></div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition">{{ projet.titre }}</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-5">{{ projet.description }}</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+                {% for tech in projet.technos %}
+                <span class="px-3 py-1 bg-white/5 text-gray-300 text-xs rounded-full border border-white/5">{{ tech }}</span>
+                {% endfor %}
             </div>
+            <a href="{{ projet.lien }}" class="inline-flex items-center text-sm text-accent gap-1 hover:gap-2 transition">Explorer →</a>
         </div>
         {% endfor %}
     </div>
+    <div class="text-center mt-12">
+    <a href="#contact" class="inline-flex items-center gap-2 bg-accent text-black px-6 py-3 rounded-full hover:bg-accent-dark transition shadow-md">
+        <!-- Icône mail (SVG) -->
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+        </svg>
+        <span>Contacter moi</span>
+    </a>
+</div>
 </section>
 
-<!-- SECTION CERTIFICATIONS -->
-<section id="certifs" class="py-24 scroll-mt-24">
-    <div class="flex flex-wrap justify-between items-end border-b border-white/10 pb-6 mb-12">
-        <h2 class="text-4xl md:text-5xl font-bebas tracking-wide">Certifications</h2>
-        <span class="text-muted text-sm font-mono hidden md:block"> badges & compétences</span>
-    </div>
-
-    <div class="space-y-2">
-        {% for certif in certifs %}
-        <div class="certif-item group flex flex-col md:flex-row md:items-center justify-between py-4 px-4 md:px-6 border-b border-white/10 hover:bg-white/5 rounded-xl transition-all">
-    
-            <div class="flex items-center gap-4">
-                <!-- Image -->
-                {% if certif.image %}
-                <div class="w-14 h-14 flex-shrink-0">
-                    {% if certif.titre == "Google Analytics Certification" %}
-                        <!-- Arrondi spécifique : cercle parfait -->
-                        <img src="{{ url_for('static', filename='images/' + certif.image) }}" 
-                             alt="{{ certif.titre }}"
-                             class="w-full h-full object-cover rounded-full">
+<!-- Certifications -->
+<section id="certifs" class="py-16 bg-white/5 rounded-3xl reveal">
+    <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Certifications</h2>
+        <div class="space-y-4">
+            {% for certif in certifs %}
+            <div class="certif-item flex flex-col md:flex-row justify-between items-start md:items-center border-b border-white/10 py-4 transition-all duration-300 hover:bg-white/5 hover:translate-x-1">
+                <div class="flex gap-4 items-center">
+                    {% if certif.image %}
+                    <img src="{{ url_for('static', filename='images/' + certif.image) }}" class="w-12 h-12 object-contain rounded-lg">
                     {% else %}
-                        <!-- Arrondi normal pour les autres certifications -->
-                        <img src="{{ url_for('static', filename='images/' + certif.image) }}" 
-                             alt="{{ certif.titre }}"
-                             class="w-full h-full object-contain rounded-lg">
+                    <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-2xl">📜</div>
                     {% endif %}
-                </div>
-                {% else %}
-                <div class="w-10 h-10 flex items-center justify-center text-2xl">
-                    📜
-                </div>
-                {% endif %}
-                
-                <!-- Texte -->
-                <div>
-                    <h3 class="font-bold text-base md:text-lg group-hover:text-accent transition">{{ certif.titre }}</h3>
-                    <p class="text-muted text-xs font-mono mt-0.5">{{ certif.organisme }} — {{ certif.date }}</p>
-                </div>
-            </div>
-            
-            <!-- Bouton -->
-            <div class="mt-2 md:mt-0">
-                <a href="{{ certif.lien }}" target="_blank" class="text-xs font-mono text-accent/80 hover:text-accent border border-accent/30 rounded-full px-3 py-1 inline-block transition-all hover:border-accent/80">
-                    Voir →
-                </a>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-
-<!-- SECTION COMPETENCES -->
-<section id="competences" class="py-24 scroll-mt-24">
-    <div class="flex flex-wrap justify-between items-end border-b border-white/10 pb-6 mb-12">
-        <h2 class="text-4xl md:text-5xl font-bebas tracking-wide">Compétences & Outils</h2>
-        <span class="text-muted text-sm font-mono hidden md:block"> stack technique</span>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {% for categorie, technologies in competences.items() %}
-        <div class="group transition-all duration-300 hover:z-10">
-            <div class="bg-card-bg/80 backdrop-blur-sm border border-white/10 rounded-2xl p-6 h-full hover:bg-white/5 hover:border-accent/40 transition-all duration-300">
-                <div class="flex items-center gap-3 mb-5 pb-3 border-b border-white/10">
-                    <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent/40 transition">
-                        <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm0 8h14M7 7h.01M7 13h.01M7 17h.01M17 7h.01M17 13h.01M17 17h.01"></path>
-                        </svg>
+                    <div>
+                        <h3 class="font-semibold">{{ certif.titre }}</h3>
+                        <p class="text-sm text-gray-400">{{ certif.organisme }} — {{ certif.date }}</p>
                     </div>
-                    <h3 class="text-lg font-bold uppercase tracking-wide group-hover:text-accent transition">{{ categorie }}</h3>
                 </div>
-                <div class="flex flex-wrap gap-2">
-                    {% for tech in technologies %}
-                    <span class="badge-skill">{{ tech }}</span>
-                    {% endfor %}
-                </div>
+                <a href="{{ certif.lien }}" target="_blank" class="mt-2 md:mt-0 text-accent text-sm border border-accent/30 rounded-full px-4 py-1 hover:bg-accent/10 transition">Voir →</a>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </section>
 
-<!-- SECTION À PROPOS AVEC EFFET PENDULAIRE (corde + balancement) -->
-<div class="swing-container">
+>
+<!-- SECTION CARROUSEL HORIZONTAL INFINI (DYNAMIQUE) -->
+<section class="py-20 overflow-x-hidden">
+    <div class="text-center mb-12">
+        <span class="text-accent font-mono text-sm uppercase tracking-wider"></span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2">Technologies & frameworks</h2>
+    </div>
+
+    <div class="horizontal-scroll">
+        <div class="scroll-track">
+            {% for categorie, technologies in competences.items() %}
+            <div class="scroll-card">
+                <h3>{{ categorie }}</h3>
+                <p>{{ technologies | join(' · ') }}</p>
+            </div>
+            {% endfor %}
+
+            <!-- Duplication pour l’effet infini (même série) -->
+            {% for categorie, technologies in competences.items() %}
+            <div class="scroll-card">
+                <h3>{{ categorie }}</h3>
+                <p>{{ technologies | join(' · ') }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- SECTION À PROPOS AVEC PHOTO À GAUCHE -->
+<div class="swing-container reveal">
     <div class="rope"></div>
     <section id="a-propos" class="py-12 md:py-16">
-        <div class="max-w-6xl mx-auto px-4 md:px-8">
-            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                <!-- Photo de profil (gauche) -->
-                <div class="flex justify-center md:justify-start">
-                    <div class="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-accent/30 shadow-2xl shadow-accent/20">
-                        <img src="{{ url_for('static', filename='images/kikim.jpeg') }}" alt="Akim Ratiarison" class="w-full h-full object-cover">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="swing-inner">
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <!-- Photo (gauche) -->
+                    <div class="flex-shrink-0">
+                        <div class="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
+                            <img src="{{ url_for('static', filename='images/kikim.jpeg') }}" alt="Akim" class="w-full h-full object-cover">
+                        </div>
                     </div>
-                </div>
-                <!-- Texte (droite) -->
-                <div class="space-y-5">
-                    <div class="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-mono tracking-wide">
-                         À propos
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-bebas tracking-wide text-white">Qui suis-je ?</h2>
-                    <div class="space-y-4 text-gray-300 text-base md:text-lg leading-relaxed">
-                        <p class="typed-paragraph" data-text="Étudiant en 2ème année de Data Science & Intelligence Artificielle à l'INSI Antananarivo, je construis une expertise solide à l'intersection de l'analyse de données, du Machine Learning et de la visualisation."></p>
-                        <p class="typed-paragraph" data-text="Je transforme des jeux de données complexes en insights actionnables que ce soit à travers des modèles prédictifs, des dashboards interactifs ou des analyses exploratoires approfondies."></p>
-                        <p class="typed-paragraph" data-text="Mon objectif : intégrer une équipe data ambitieuse où je peux apporter une valeur immédiate tout en continuant à progresser."></p>
+                    <!-- Texte (droite) -->
+                    <div class="flex-1 text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-emerald-400 bg-clip-text text-transparent">
+                            Qui suis-je ?
+                        </h2>
+                        <div class="space-y-3 text-gray-300 text-base md:text-lg leading-relaxed">
+                            <p class="typed-paragraph" data-text="Étudiant en 2ème année de Data Science & Intelligence Artificielle à l'INSI Antananarivo, je construis une expertise solide à l'intersection de l'analyse de données, du Machine Learning et de la visualisation."></p>
+                            <p class="typed-paragraph" data-text="Je transforme des jeux de données complexes en insights actionnables que ce soit à travers des modèles prédictifs, des dashboards interactifs ou des analyses exploratoires approfondies."></p>
+                            <p class="typed-paragraph" data-text="Mon objectif : intégrer une équipe data ambitieuse où je peux apporter une valeur immédiate tout en continuant à progresser."></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -190,4 +158,59 @@
     </section>
 </div>
 
+<!-- SECTION DISPONIBILITÉ + MODEL ACCURACY -->
+<div class="grid md:grid-cols-2 gap-12 items-center my-20 reveal">
+    <!-- Colonne gauche : widget accuracy -->
+    <div class="model-accuracy text-center">
+        <div class="relative w-48 h-48 mx-auto">
+            <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#2d3748" stroke-width="6" />
+                <circle id="progress-circle" cx="50" cy="50" r="45" fill="none" stroke="#2dd4bf" stroke-width="6" stroke-dasharray="283" stroke-dashoffset="283" stroke-linecap="round" />
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span id="accuracy-percent" class="text-5xl font-bold text-white">0</span>
+                <span class="text-sm text-gray-400 mt-1">Accuracy</span>
+            </div>
+        </div>
+        <h3 class="text-xl font-semibold mt-6">Modèle ML – Classification</h3>
+        <p class="text-sm text-accent font-sans">99% de chances de vous impressionnez </p>
+    </div>
+
+    <!-- Colonne droite : disponibilité -->
+    <div class="text-center md:text-left space-y-4">
+        <div class="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-mono border border-accent/30">
+             Disponible 
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold">Je suis libre pour toute collaboration</h2>
+        <p class="text-gray-300 text-lg">Que ce soit pour un projet, un stage ou une mission freelance, je suis ouvert à discuter de vos idées et besoins. Contactez‑moi pour en parler !</p>
+        <a href="#contact" class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-full hover:bg-accent-dark transition mt-4">
+            
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+        </a>
+    </div>
+</div>
+
+<!-- Contact -->
+<section id="contact" class="py-16 reveal">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Prendre En Contact </h2>
+    <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div class="space-y-6">
+            <div><h3 class="font-semibold text-white">Email</h3><p class="text-gray-400">tratiarisonakiim@gmail.com</p></div>
+            <div><h3 class="font-semibold text-white">Téléphone</h3><p class="text-gray-400">+261 38 49 066 35</p></div>
+            <div><h3 class="font-semibold text-white">Localisation</h3><p class="text-gray-400">Antananarivo, Madagascar</p></div>
+            <div><h3 class="font-semibold text-white">Connect</h3><div class="flex gap-4"><a href="#" class="text-gray-400 hover:text-accent">LinkedIn</a><a href="#" class="text-gray-400 hover:text-accent">GitHub</a><a href="#" class="text-gray-400 hover:text-accent">X</a></div></div>
+        </div>
+        <form class="space-y-4">
+            <input type="text" placeholder="Votre nom" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+            <input type="email" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+            <input type="text" placeholder="Sujet" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+            <textarea rows="4" placeholder="Message" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none"></textarea>
+            <button type="submit" class="inline-flex items-center gap-2 bg-accent text-black px-6 py-3 rounded-full hover:bg-accent-dark transition shadow-md">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                <span>Envoyer le message</span>
+            </button>
+    </div>
+</section>
 {% endblock %}

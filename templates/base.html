@@ -2,152 +2,80 @@
 <html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/Firefly.png') }}">
     <title>Akim Portfolio</title>
-    
-    <!-- Tailwind CSS CDN + configuration manuelle -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        'bebas': ['"Bebas Neue"', 'sans-serif'],
-                        'mono': ['"IBM Plex Mono"', 'monospace'],
-                        'sans': ['"Inter"', 'system-ui', 'sans-serif'],
-                    },
                     colors: {
-                        'dark-bg': '#1a1919d3',
-                        'card-bg': '#0f0f0fcc',
-                        'accent': '#f6faf0ec',
-                        'accent-dark': '#b3997c',
-                        'muted': '#9ca3af',
+                        'accent': '#2dd4bf',
+                        'accent-dark': '#0f766e',
+                        'card': '#111111',
+                        'dark': '#0a0a0a'
                     },
-                    animation: {
-                        'grain': 'grain 8s steps(10) infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        grain: {
-                            '0%, 100%': { transform: 'translate(0, 0)' },
-                            '10%': { transform: 'translate(-2%, -1%)' },
-                            '20%': { transform: 'translate(1%, -2%)' },
-                            '30%': { transform: 'translate(-1%, 2%)' },
-                            '40%': { transform: 'translate(2%, 1%)' },
-                            '50%': { transform: 'translate(-2%, -1%)' },
-                            '60%': { transform: 'translate(1%, 1%)' },
-                            '70%': { transform: 'translate(-1%, -1%)' },
-                            '80%': { transform: 'translate(2%, 2%)' },
-                            '90%': { transform: 'translate(-2%, 1%)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
+                    fontFamily: {
+                        'mono': ['"IBM Plex Mono"', 'monospace'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        
                     }
                 }
             }
         }
     </script>
-    
-    <!-- Polices Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body class="text-gray-200 font-sans antialiased overflow-x-hidden relative min-h-screen">
-    <!-- Logos flottants en arrière-plan -->
-<div class="floating-logos">
-    <div class="logo-float logo-1"><img src="{{ url_for('static', filename='images/logos/python.png') }}" alt="Python"></div>
-    <div class="logo-float logo-2"><img src="{{ url_for('static', filename='images/logos/pandas.png') }}" alt="Pandas"></div>
-    <div class="logo-float logo-3"><img src="{{ url_for('static', filename='images/logos/docker.png') }}" alt="Docker"></div>
-    <div class="logo-float logo-4"><img src="{{ url_for('static', filename='images/logos/git.png') }}" alt="Git"></div>
-    <div class="logo-float logo-5"><img src="{{ url_for('static', filename='images/logos/githubactions.png') }}" alt="GitHub Actions"></div>
-    <div class="logo-float logo-6"><img src="{{ url_for('static', filename='images/logos/flask.png') }}" alt="Flask"></div>
-    <div class="logo-float logo-7"><img src="{{ url_for('static', filename='images/logos/azure.png') }}" alt="Azure"></div>
-    <div class="logo-float logo-8"><img src="{{ url_for('static', filename='images/logos/bigquery.png') }}" alt="BigQuery"></div>
-    <div class="logo-float logo-9"><img src="{{ url_for('static', filename='images/logos/powerbi.png') }}" alt="Power BI"></div>
-    <div class="logo-float logo-10"><img src="{{ url_for('static', filename='images/logos/mysql.png') }}" alt="MySQL"></div>
-    <div class="logo-float logo-11"><img src="{{ url_for('static', filename='images/logos/numpy.png') }}" alt="NumPy"></div>
-    <div class="logo-float logo-12"><img src="{{ url_for('static', filename='images/logos/postgresql.png') }}" alt="PostgreSQL"></div>
-    <div class="logo-float logo-13"><img src="{{ url_for('static', filename='images/logos/pytorch.png') }}" alt="PyTorch"></div>
-    <div class="logo-float logo-14"><img src="{{ url_for('static', filename='images/logos/r.png') }}" alt="R"></div>
-    <div class="logo-float logo-15"><img src="{{ url_for('static', filename='images/logos/rust.png') }}" alt="Rust"></div>
-    <div class="logo-float logo-16"><img src="{{ url_for('static', filename='images/logos/scikitlearn.png') }}" alt="Scikit-learn"></div>
-    <div class="logo-float logo-17"><img src="{{ url_for('static', filename='images/logos/streamlit.png') }}" alt="Streamlit"></div>
-    <div class="logo-float logo-18"><img src="{{ url_for('static', filename='images/logos/tailwind.png') }}" alt="Tailwind"></div>
-    <div class="logo-float logo-19"><img src="{{ url_for('static', filename='images/logos/matplotlib.png') }}" alt="Matplotlib"></div>
-    <div class="logo-float logo-20"><img src="{{ url_for('static', filename='images/logos/anaconda.png') }}" alt="Anaconda"></div>
-    <!-- Logos au milieu -->
-    <div class="logo-float logo-11"><img src="{{ url_for('static', filename='images/logos/python.png') }}" alt="Python"></div>
-    <div class="logo-float logo-12"><img src="{{ url_for('static', filename='images/logos/pandas.png') }}" alt="Pandas"></div>
-    <div class="logo-float logo-17"><img src="{{ url_for('static', filename='images/logos/scikitlearn.png') }}" alt="Scikit-learn"></div>
-</div>
-    <!-- Image de fond -->
-    <div id="animated-bg" class="fixed inset-0 bg-cover bg-center z-0"
-         style="background-image: url('{{ url_for('static', filename='images/fond1.jpg') }}');">
-    </div>
+<body class=" text-gray-300 font-sans antialiased"
+      style="background-image: url('{{ url_for('static', filename='images/background.jpeg') }}'); background-size: cover; background-attachment: fixed; background-position: center;">
 
-    <!-- Particules flottantes -->
-    <div class="fixed inset-0 pointer-events-none z-0">
-        <div class="particle particle-1"></div>
-        <div class="particle particle-2"></div>
-        <div class="particle particle-3"></div>
-        <div class="particle particle-4"></div>
-    </div>
+    <!-- Voile sombre pour lisibilité (optionnel) -->
+    <div class="fixed inset-0 bg-black/55 pointer-events-none z-0"></div>
 
-    <!-- Voile sombre -->
-    <div class="fixed inset-0 bg-black/65 pointer-events-none z-0"></div>
-    
-    <!-- Navigation -->
-         <nav class="fixed top-0 w-full z-50 px-6 py-4 bg-gradient-to-r from-gray-950 to-gray-800 border-b border-white/5">
-            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between">
-                
-                <!-- Logo + nom (gauche) -->
-                <div class="flex items-center gap-2">
-                    <img src="{{ url_for('static', filename='images/Firefly.png') }}" alt="Logo" class="h-8 w-auto rounded-full">
-                    <span class="font-sans text-base md:text-xl tracking-widest uppercase whitespace-nowrap">AKIM RATIARISON</span>
-                </div>
-                
-                <!-- Menu desktop (droite) -->
-                <div class="hidden md:flex gap-6 lg:gap-8 font-sans text-sm uppercase tracking-wider">
-                    <a href="#hero" class="nav-link">Accueil</a>
-                    <a href="#projets" class="nav-link">Projets</a>
-                    <a href="#certifs" class="nav-link">Certifications</a>
-                    <a href="#competences" class="nav-link">Compétences</a>
-                    <a href="#a-propos" class="nav-link">A propos</a>
-                </div>
-                
-                <!-- Bouton burger (mobile) -->
-                <button id="menu-btn" class="md:hidden relative w-6 h-6 focus:outline-none">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
+    <!-- Navigation fixe -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-black/80 border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+            <img src="{{ url_for('static', filename='images/Firefly.png') }}" alt="Logo" class="h-6 w-auto rounded-full">
+            <span class="text-xl font-bold tracking-tight text-white">AKIM RATIARISON</span>
+        </div>
+            <div class="hidden md:flex gap-8 text-sm uppercase tracking-wide">
+                <a href="#hero" class="nav-link">Accueil</a>
+                <a href="#projets" class="nav-link">Projets</a>
+                <a href="#certifs" class="nav-link">Certifications</a>
+                <a href="#expertise" class="nav-link">Expertise</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-            
-            <!-- Menu mobile -->
-            <div id="mobile-menu" class="hidden md:hidden mt-3 pt-2 pb-3 flex flex-col gap-2 font-sans text-sm uppercase tracking-wider text-center bg-black/50 backdrop-blur-lg rounded-xl">
-                <a href="#hero" class="nav-link py-2">Accueil</a>
-                <a href="#projets" class="nav-link py-2">Projets</a>
-                <a href="#certifs" class="nav-link py-2">Certifications</a>
-                <a href="#competences" class="nav-link py-2">Compétences</a>
-                <a href="#a-propos" class="nav-link py-2">A propos</a>
+             <button id="menu-btn" class="md:hidden text-gray-300 focus:outline-none">
+            <div class="hamburger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </nav>
+        </button>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark/35 backdrop-blur-md border-t border-white/5 py-3 text-center">
+            <a href="#hero" class="block px-6 py-2 hover:bg-white/5">Accueil</a>
+            <a href="#projets" class="block px-6 py-2 hover:bg-white/5">Projets</a>
+            <a href="#certifs" class="block px-6 py-2 hover:bg-white/5">Certifications</a>
+            <a href="#expertise" class="block px-6 py-2 hover:bg-white/5">Expertise</a>
+            <a href="#contact" class="block px-6 py-2 hover:bg-white/5">Contact</a>
+        </div>
+    </nav>
 
-    <main class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+    <main class="relative z-10 max-w-6xl mx-auto px-6 pt-28 pb-16">
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="text-center py-12 text-muted text-xs font-mono border-t border-white/5 mt-24">
-        <p>Data Analyst & AI Student — <span class="text-accent">Akim Ratiarison © 2026</span></p>
+    <footer class="text-center py-8 text-sm text-gray-500 border-t border-white/5 text-white">
+        <p>Akim Ratiarison  data Analyst & AI Student ©2026</p>
     </footer>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
 </body>
 </html>
