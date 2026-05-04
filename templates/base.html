@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/Firefly.png') }}">
     <title>Akim Portfolio</title>
     <!-- Tailwind CSS CDN -->
@@ -20,7 +22,7 @@
                     fontFamily: {
                         'mono': ['"IBM Plex Mono"', 'monospace'],
                         'sans': ['Inter', 'system-ui', 'sans-serif'],
-                        
+                        'signature': ['"Playwrite DE Grund"', 'cursive']
                     }
                 }
             }
@@ -40,7 +42,7 @@
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
             <img src="{{ url_for('static', filename='images/Firefly.png') }}" alt="Logo" class="h-6 w-auto rounded-full">
-            <span class="text-xl font-bold tracking-tight text-white">AKIM RATIARISON</span>
+            <span class="signature-name text-2xl md:text-3xl text-white">AKIM RATIARISON</span>
         </div>
             <div class="hidden md:flex gap-8 text-sm uppercase tracking-wide">
                 <a href="#hero" class="nav-link">Accueil</a>

@@ -161,7 +161,7 @@ function typeParagraphs(paragraphs, index) {
         if (section && section.classList.contains('swing')) {
             setTimeout(() => {
                 section.classList.remove('swing');
-            }, 4000);
+            }, 7000);
         }
         return;
     }
@@ -221,3 +221,33 @@ function initModelAccuracy() {
 document.addEventListener('DOMContentLoaded', () => {
     initModelAccuracy();
 });
+
+// Reveal zigzag pour Technologies & outils (réactif au scroll)
+function initTechZigzagReveal() {
+    const items = document.querySelectorAll('.zigzag-reveal');
+    if (!items.length) return;
+
+    // Appliquer la direction d’animation (gauche / droite)
+    items.forEach((item, idx) => {
+        if (idx % 2 === 0) {
+            item.classList.add('from-left');
+        } else {
+            item.classList.add('from-right');
+        }
+    });
+
+    // Observateur qui ajoute/retire la classe ‘revealed’ à chaque entrée/sortie
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            } else {
+                entry.target.classList.remove('revealed');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    items.forEach(item => observer.observe(item));
+}
+
+document.addEventListener('DOMContentLoaded', initTechZigzagReveal);

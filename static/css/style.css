@@ -63,19 +63,22 @@ html {
 }
 
 /* ========== CARROUSEL HORIZONTAL INFINI ========== */
-.horizontal-scroll {
+/*.horizontal-scroll {
     width: 100%;
     overflow-x: hidden;
     white-space: nowrap;
     position: relative;
     cursor: grab;
 }
-.scroll-track {
+ .scroll-track {
     display: inline-flex;
-    gap: 1.8rem;
-    animation: scrollInfini 45s linear infinite;
+    gap: 1.2rem;
+    width: max-content;        
+    animation: scrollInfini 25s linear infinite;
     will-change: transform;
+    transform: translateZ(0);
 }
+
 .horizontal-scroll:hover .scroll-track {
     animation-play-state: paused;
 }
@@ -84,12 +87,12 @@ html {
     backdrop-filter: blur(8px);
     border: 1px solid rgba(45, 212, 191, 0.2);
     border-radius: 2rem;
-    padding: 1rem;
-    width: 320px;
+    padding: 0.8rem;
+    width: 280px;
     white-space: normal;
     transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     display: inline-block;
-    vertical-align: top;
+    
 }
 .scroll-card:hover {
     transform: translateY(-2px);
@@ -111,7 +114,7 @@ html {
 .scroll-card p {
     font-size: 0.8rem;
     color: #cbd5e1;
-    line-height: 1.5;
+    
     font-family: 'Inter', sans-serif;
     text-align: center;
     margin: 0;
@@ -119,7 +122,7 @@ html {
 @keyframes scrollInfini {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
-}
+}*/
 
 /* Effet hover certifications */
 .certif-item {
@@ -137,7 +140,7 @@ html {
     margin-top: 2rem;
     overflow: visible;
 }
-.rope {
+.tady {
     position: absolute;
     top: -25px;
     left: 50%;
@@ -147,7 +150,7 @@ html {
     transform: translateX(-50%);
     z-index: 5;
 }
-.rope::after {
+.tady::after {
     content: '';
     position: absolute;
     bottom: -4px;
@@ -158,7 +161,7 @@ html {
     border-radius: 50%;
 }
 
-/* Animation swing (balancement) – s’applique à .swing-inner */
+/* Animation swing (balancement)*/
 #a-propos .swing-inner {
     transform-origin: 50% 0%;
     transition: transform 0.3s ease;
@@ -270,11 +273,11 @@ footer {
     }
 }
 
-/* Animation de fondu + léger décalage vertical (mobile et desktop si nécessaire) */
+/* Animation de fondu + léger décalage vertical */
 @keyframes fadeInUp {
     0% {
         opacity: 0;
-        transform: translateX(15px);
+        transform: translateX(16px);
     }
     100% {
         opacity: 1;
@@ -304,7 +307,7 @@ section h2::before {
     height: 1px;
 }
 /*Magazine */
-/*section h2 {
+/*section h2 .{
     display: inline-block;
     position: relative;
     padding-bottom: 0.5rem;
@@ -321,3 +324,259 @@ section h2::after {
     border-radius: 4px;
     box-shadow: 0 0 6px #2dd4bf;
 }*/
+
+/* Réglages pour mobile (écrans de moins de 768px) */
+@media (max-width: 768px) {
+    /* Réduire légèrement la taille des titres principaux */
+    h1 {
+        font-size: 2.2rem !important;
+    }
+    h2 {
+        font-size: 1.8rem !important;
+    }
+    h3 {
+        font-size: 1.3rem !important;
+    }
+    /* Ajuster le texte des paragraphes */
+    p, li, .text-muted {
+        font-size: 0.9rem !important;
+    }
+    /* Pour les cartes et badges */
+    .card-project h3 {
+        font-size: 1.1rem !important;
+    }
+    .badge-skill, .tech-badge {
+        font-size: 0.7rem !important;
+        padding: 2px 8px !important;
+    }
+
+      /* Certifications : titres et dates */
+    #certifs h3 {
+        font-size: 1rem !important; /* titre de la certification */
+    }
+    #certifs .text-gray-400,
+    #certifs .text-muted {
+        font-size: 0.7rem !important; /* organisme et date */
+    }
+    /* Optionnel : réduction de la largeur des images */
+    #certifs .w-12.h-12 {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+    
+    
+}
+
+.horizontal-scroll h3 {
+    color: #2dd4bf;
+}
+
+/*  CV SUSPENDU (effet corde) */
+.swing-container-cv {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    overflow: visible;
+}
+
+.tady-cv {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    width: 1px;
+    height: 25px;
+    background: rgba(203, 213, 225, 0.541);
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.tady-cv::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: -3px;
+    width: 7px;
+    height: 7px;
+    background: rgba(203, 213, 225, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 10px 78px rgba(20, 20, 20, 1);
+}
+
+.cv-button-wrapper {
+    animation: swingCV 4s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+@keyframes swingCV {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(-1deg); }
+    75% { transform: rotate(0.5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Pause au survol */
+.cv-button-wrapper:hover {
+    animation-play-state: paused;
+}
+
+.stat-number {
+    color: #fafafae1 !important; 
+}
+.stat-number p {
+   
+    color: #2dd4bf !important;
+}
+
+
+
+/* Timeline verticale */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 1rem;
+    bottom: 1rem;
+    width: 2px;
+    background: linear-gradient(to bottom, #2dd4bf, #0f766e);
+    border-radius: 2px;
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+.timeline-dot {
+    position: absolute;
+    left: -1.25rem;
+    top: 0.5rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    background: #2dd4bf;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(45,212,191,0.2);
+}
+.timeline-card {
+    background: rgba(17, 17, 17, 0.7);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.timeline-card:hover {
+    transform: translateX(6px);
+    border-color: rgba(45,212,191,0.4);
+}
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 1rem;
+    }
+    .timeline::before {
+        left: 0.25rem;
+    }
+    .timeline-dot {
+        left: -0.75rem;
+    }
+}
+
+
+
+/* Grille zigzag pour les technologies */
+.tech-zigzag-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.tech-zigzag-item {
+    background: rgba(17, 17, 17, 0.4);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(45, 212, 191, 0.2);
+    border-radius: 1.5rem;
+    padding: 1rem 1.5rem;
+    width: 80%;
+    transition: all 0.3s ease;
+}
+.tech-zigzag-item.left {
+    align-self: flex-start;
+    margin-right: auto;
+    margin-left: 0;
+}
+.tech-zigzag-item.right {
+    align-self: flex-end;
+    margin-left: auto;
+    margin-right: 0;
+}
+.tech-cat-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2dd4bf;
+    border-left: 3px solid #2dd4bf;
+    padding-left: 0.75rem;
+}
+.tech-list-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.tech-list-items li {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    position: relative;
+    padding-left: 1rem;
+}
+.tech-list-items li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #2dd4bf;
+}
+/* Sur mobile, on empile normalement (pas de zigzag) */
+@media (max-width: 768px) {
+    .tech-zigzag-item {
+        width: 100%;
+        align-self: auto !important;
+        margin: 0 !important;
+    }
+    .tech-cat-title {
+        font-size: 1.1rem;
+    }
+    .tech-list-items li {
+        font-size: 0.75rem;
+    }
+}
+
+/* Animation reveal pour le zigzag */
+.zigzag-reveal {
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+.zigzag-reveal.from-left {
+    transform: translateX(-40px);
+}
+.zigzag-reveal.from-right {
+    transform: translateX(40px);
+}
+.zigzag-reveal.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.signature-name {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    background: linear-gradient(135deg, #fff, #fbbf24);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: none;
+}

@@ -2,9 +2,16 @@
 
 {% block content %}
 <!-- Hero section (photo à droite) -->
-<section id="hero" class="flex flex-col md:flex-row justify-between items-center gap-10 pt-4 reveal">
-    <div class="flex-1 space-y-5">
-        <p class="text-accent text-xl uppercase tracking-wider font-mono">Junior Data Analyst & AI Student</p>
+<section id="hero" class="flex flex-col md:grid md:grid-cols-2 gap-10 items-center pt-4 reveal">
+    <!-- Photo (première sur mobile, deuxième sur desktop) -->
+    <div class="order-1 md:order-2 flex justify-center">
+        <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accent/30 shadow-2xl shadow-accent/10">
+            <img src="{{ url_for('static', filename='images/akim.jpg') }}" alt="Akim" class="w-full h-full object-cover">
+        </div>
+    </div>
+    <!-- Texte (deuxième sur mobile, premier sur desktop) -->
+    <div class="order-2 md:order-1 space-y-5">
+        <p class="text-accent text-xl uppercase tracking-wider font-sans">Junior Data Analyst & AI Student</p>
         <h1 class="text-5xl md:text-7xl font-bold leading-tight text-white">
             TURNING <br>
             <span class="text-gray-500">DATA INTO</span><br>
@@ -14,23 +21,31 @@
             Je suis Akim. Je prends vos données, les analyse et les transforme en insights clairs et actionnables.<br>
             Grâce <span id="typed-text" class="font-mono border-r-2 border-accent"></span>
         </p>
-        <a href="#projets" class="inline-flex items-center gap-2 bg-accent/10 backdrop-blur-sm border border-accent/30 text-accent px-6 py-3 rounded-full hover:bg-accent/20 transition">
+        <a href="#projets" class="inline-flex items-center gap-2 bg-accent/10 backdrop-blur-sm border border-accent/30 text-gray px-6 py-3 rounded-full hover:bg-accent/20 transition">
             Voir les projets
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
         </a>
-    </div>
-    <div class="flex-1 flex justify-center">
-        <div class="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accent/30 shadow-2xl shadow-accent/10">
-            <img src="{{ url_for('static', filename='images/akim.jpg') }}" alt="Akim" class="w-full h-full object-cover">
-        </div>
     </div>
 </section>
 
 <!-- Statistiques (5,8,30) -->
 <div class="grid grid-cols-3 gap-4 text-center py-12 border-y border-white/10 my-12 reveal">
-    <div><div class="stat-number text-4xl font-bold text-accent" data-target="5">0</div><p class="text-gray-500">Projets</p></div>
-    <div><div class="stat-number text-4xl font-bold text-accent" data-target="8">0</div><p class="text-gray-500">Catégories</p></div>
-    <div><div class="stat-number text-4xl font-bold text-accent" data-target="30">0</div><p class="text-gray-500">Technologies</p></div>
+    <div><div class="stat-number text-4xl font-bold " data-target="5">0</div><p class="text-accent">Projets</p></div>
+    <div><div class="stat-number text-4xl font-bold " data-target="8">0</div><p class="text-accent">Catégories</p></div>
+    <div><div class="stat-number text-4xl font-bold " data-target="30">0</div><p class="text-accent">Technologies</p></div>
+</div>
+
+<!-- BOUTON CV SUSPENDU (effet corde) -->
+<div class="swing-container-cv reveal mt-8 mb-12">
+    <div class="tady-cv"></div>
+    <div class="cv-button-wrapper">
+        <a href="{{ url_for('static', filename='files/CV_Akim.pdf') }}" download class="cv-button inline-flex items-center gap-3 bg-accent/10 backdrop-blur-sm border border-accent/30 text-gray px-8 py-4 rounded-full hover:bg-accent/20 transition-all duration-300 text-lg font-semibold shadow-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 4h16v16H4V4z" />
+            </svg>
+            Télécharger mon CV
+        </a>
+    </div>
 </div>
 
 <!-- Expertise (barres de progression) -->
@@ -100,28 +115,19 @@
     </div>
 </section>
 
->
-<!-- SECTION CARROUSEL HORIZONTAL INFINI (DYNAMIQUE) -->
-<section class="py-20 overflow-x-hidden">
-    <div class="text-center mb-12">
-        <span class="text-accent font-mono text-sm uppercase tracking-wider"></span>
-        <h2 class="text-3xl md:text-4xl font-bold mt-2">Technologies & frameworks</h2>
-    </div>
-
-    <div class="horizontal-scroll">
-        <div class="scroll-track">
+<!-- SECTION TECHNOLOGIES & OUTILS – ZIGZAG + REVEAL -->
+<section id="tech-outils" class="py-20">
+    <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Technologies & outils</h2>
+        <div class="tech-zigzag-grid">
             {% for categorie, technologies in competences.items() %}
-            <div class="scroll-card">
-                <h3>{{ categorie }}</h3>
-                <p>{{ technologies | join(' · ') }}</p>
-            </div>
-            {% endfor %}
-
-            <!-- Duplication pour l’effet infini (même série) -->
-            {% for categorie, technologies in competences.items() %}
-            <div class="scroll-card">
-                <h3>{{ categorie }}</h3>
-                <p>{{ technologies | join(' · ') }}</p>
+            <div class="tech-zigzag-item zigzag-reveal {% if loop.index0 is even %}left{% else %}right{% endif %}" data-index="{{ loop.index0 }}">
+                <div class="tech-cat-title">{{ categorie }}</div>
+                <ul class="tech-list-items">
+                    {% for tech in technologies %}
+                    <li>{{ tech }}</li>
+                    {% endfor %}
+                </ul>
             </div>
             {% endfor %}
         </div>
@@ -130,11 +136,11 @@
 
 <!-- SECTION À PROPOS AVEC PHOTO À GAUCHE -->
 <div class="swing-container reveal">
-    <div class="rope"></div>
+    <div class="tady"></div>
     <section id="a-propos" class="py-12 md:py-16">
         <div class="max-w-5xl mx-auto px-6">
             <div class="swing-inner">
-                <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="flex flex-col md:flex-row items-center gap-9">
                     <!-- Photo (gauche) -->
                     <div class="flex-shrink-0">
                         <div class="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
@@ -147,7 +153,7 @@
                             Qui suis-je ?
                         </h2>
                         <div class="space-y-3 text-gray-300 text-base md:text-lg leading-relaxed">
-                            <p class="typed-paragraph" data-text="Étudiant en 2ème année de Data Science & Intelligence Artificielle à l'INSI Antananarivo, je construis une expertise solide à l'intersection de l'analyse de données, du Machine Learning et de la visualisation."></p>
+                            <p class="typed-paragraph" data-text="Étudiant en 2ème année de Data & Intelligence Artificielle à l'INSI Antananarivo, je construis une expertise solide à l'intersection de l'analyse de données, du Machine Learning et de la visualisation."></p>
                             <p class="typed-paragraph" data-text="Je transforme des jeux de données complexes en insights actionnables que ce soit à travers des modèles prédictifs, des dashboards interactifs ou des analyses exploratoires approfondies."></p>
                             <p class="typed-paragraph" data-text="Mon objectif : intégrer une équipe data ambitieuse où je peux apporter une valeur immédiate tout en continuant à progresser."></p>
                         </div>
@@ -157,6 +163,50 @@
         </div>
     </section>
 </div>
+
+<!-- SECTION PARCOURS ACADÉMIQUE -->
+<section id="academique" class="py-20 reveal">
+    <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Parcours académique</h2>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="flex justify-between items-start flex-wrap gap-2">
+                        <h3 class="text-xl font-bold text-accent">Data & AI</h3>
+                        <span class="text-sm text-gray-400">2025 – présent</span>
+                    </div>
+                    <p class="text-gray-300 mt-2">INSI Antananarivo – 2ème année</p>
+                    <p class="text-gray-400 text-sm mt-1">Machine Learning, Data, Visualisation.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="flex justify-between items-start flex-wrap gap-2">
+                        <h3 class="text-lg font-bold text-accent">ESIIA 2 (Electronique Système Informatique et Intelligence Artficielle)</h3>
+                        <span class="text-sm text-gray-400">2021 – 2023</span>
+                    </div>
+                    <p class="text-gray-300 mt-1">ISPM (Institut Supérieur Polytechnique de Madagascar)</p>
+                    <p class="text-gray-400 text-sm mt-1">Système embarqué, Arduino, Assembleur, C </p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="flex justify-between items-start flex-wrap gap-2">
+                        <h3 class="text-xl font-bold text-accent">Terminale série D</h3>
+                        <span class="text-sm text-gray-400">2020 - 2021</span>
+                    </div>
+                    <p class="text-gray-300 mt-2">LSPCA (Lycée Saint Pierre Canisius Ambohipo)</p>
+                    <p class="text-gray-400 text-sm mt-1"></p>
+                </div>
+            </div>
+            <!-- Ajoute d’autres étapes -->
+        </div>
+    </div>
+</section>
+
 
 <!-- SECTION DISPONIBILITÉ + MODEL ACCURACY -->
 <div class="grid md:grid-cols-2 gap-12 items-center my-20 reveal">
@@ -178,7 +228,7 @@
 
     <!-- Colonne droite : disponibilité -->
     <div class="text-center md:text-left space-y-4">
-        <div class="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-mono border border-accent/30">
+        <div class="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-sans border border-accent/30">
              Disponible 
         </div>
         <h2 class="text-3xl md:text-4xl font-bold">Je suis libre pour toute collaboration</h2>
