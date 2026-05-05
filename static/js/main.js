@@ -251,3 +251,17 @@ function initTechZigzagReveal() {
 }
 
 document.addEventListener('DOMContentLoaded', initTechZigzagReveal);
+
+// === FAUX CHARGEMENT (simulation) + DISPARITION QUAND TOUT EST CHARGÉ ===
+window.addEventListener('load', function() {
+    const loader = document.getElementById('loader-overlay');
+    if (loader) {
+        // Disparition avec fondu après 0.5s (pour que l’utilisateur voie la barre au moins un instant)
+        setTimeout(() => {
+    loader.classList.add('loader-hidden');
+    setTimeout(() => {
+        loader.style.display = 'none';
+    }, 500);
+}, 2000);
+    }
+});
