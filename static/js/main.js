@@ -15,7 +15,7 @@ if (navbar && navLinks.length) {
 // ========== TYPING EFFECT (hero) ==========
 const typedWords = ['à Python & SQL.', 'à Google Analytics.', 'à Looker Studio.', 'au Machine Learning.'];
 let wordIndex = 0;
-let charIndex = 0;
+let indexeo = 0;
 let isDeleting = false;
 const typedElement = document.getElementById('typed-text');
 let timeoutId = null;
@@ -26,22 +26,22 @@ function typeEffect() {
     const currentWord = typedWords[wordIndex];
     
     if (isDeleting) {
-        typedElement.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
+        typedElement.textContent = currentWord.substring(0, indexeo - 1);
+        indexeo--;
     } else {
-        typedElement.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
+        typedElement.textContent = currentWord.substring(0, indexeo + 1);
+        indexeo++;
     }
     
     // Fin de l'écriture
-    if (!isDeleting && charIndex === currentWord.length) {
+    if (!isDeleting && indexeo === currentWord.length) {
         isDeleting = true;
         timeoutId = setTimeout(typeEffect, 2000);
         return;
     }
     
     // Fin de la suppression
-    if (isDeleting && charIndex === 0) {
+    if (isDeleting && indexeo === 0) {
         isDeleting = false;
         wordIndex = (wordIndex + 1) % typedWords.length;
         timeoutId = setTimeout(typeEffect, 500);
