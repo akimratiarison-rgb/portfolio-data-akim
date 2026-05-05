@@ -83,12 +83,12 @@ CERTIFICATIONS = [
 
 # SECTION COMPÉTENCES
 COMPETENCES = {
-    "Langages de programmation": ["Python", "JavaScript", "SQL", "Dart", "Rust"],
-    "Librairies & Frameworks Python": ["NumPy", "Pandas", "Polars","Scrapy", "Matplotlib", "Scikit-learn", "ReportLab", "BeautifulSoup", "Flask", "Streamlit", "Jinja2"],
-    "Machine Learning & Deep Learning": ["KNN", "Régression linéaire multiple", "GridSearchCV", "Deep Learning"],
-    "Frontend": ["React.js", "Flutter", "HTML", "CSS", "Tailwind CSS"],
-    "Analytics & BI": ["Google Analytics 4", "Power BI"],
-    "Data Warehousing & Cloud": ["BigQuery", "Snowflake", "DBT"],
+    "Langages de programmation": ["Python", "JavaScript", "SQL"],
+    "Librairies & Frameworks Python": ["NumPy", "Pandas","Scrapy", "Matplotlib", "Scikit-learn", "BeautifulSoup", "Flask", "Streamlit", "Jinja2"],
+    "Machine Learning & Deep Learning": ["KNN", "Régression linéaire multiple", "GridSearchCV"],
+    "Frontend": [ "HTML", "CSS", "Tailwind CSS"],
+    "Analytics & BI": ["Google Analytics 4", "Power BI", "Looker Studio", "GTM"],
+    "Data Warehousing & Cloud": ["BigQuery", "DBT"],
     "DevOps & Environnement": ["Docker", "Git", "GitHub", "VS Code"],
     "Collection de données": ["Web Scraping"]
 }
