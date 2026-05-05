@@ -9,9 +9,9 @@ app = Flask(__name__)
 # ============================================
 PROJETS = [
     {
-        "titre": "Classification KNN – Systèmes IT",
-        "description": "Modèle KNN pour classifier des états de systèmes informatiques. Optimisation via GridSearchCV.",
-        "technos": ["Python", "Scikit-learn", "Pandas"],
+        "titre": "Ohatra oa",
+        "description": "ohatra",
+        "technos": ["Deep learning"],
         "lien": "#",
         "emoji": "🤖",
         "highlight": True   
@@ -25,25 +25,25 @@ PROJETS = [
         "highlight": False
     },
     {
-        "titre": "Dashboard GA4",
-        "description": "Analyse du comportement utilisateur et reporting pour optimiser les conversions.",
-        "technos": ["GA4", "Looker Studio", "GTM"],
+        "titre": "Mbola !",
+        "description": "aiza koa.",
+        "technos": ["no no no "],
         "lien": "#",
         "emoji": "📊",
         "highlight": False
     },
     {
-        "titre": "Prédiction de séries temporelles",
-        "description": "Modèle LSTM pour prévoir la demande énergétique. Déploiement Flask.",
-        "technos": ["TensorFlow", "Keras", "Flask"],
+        "titre": "Mitady !",
+        "description": "tsy aiko.",
+        "technos": ["streamlit ?"],
         "lien": "#",
         "emoji": "⏳",
         "highlight": True
     },
 {
-"titre": "Analyse des ventes – Power BI",
-"description": "Dashboard interactif pour suivre les KPI de ventes. Filtres dynamiques et prévisions.",
-"technos": ["Power BI", "DAX", "SQL"],
+"titre": "Analyse des ventes Power BI",
+"description": "hevitra mety",
+"technos": ["Power BI"],
 "lien": "#",
 "emoji": "📊",
 "highlight": False

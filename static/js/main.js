@@ -84,24 +84,52 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ========== ANIMATED COUNTERS (statistiques) ==========
-const counters = document.querySelectorAll('.stat-number');
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = parseInt(el.dataset.target);
-            let current = 0;
-            const interval = setInterval(() => {
-                current += target / 50;
-                if (current < target) el.innerText = Math.floor(current);
-                else { el.innerText = target; clearInterval(interval); }
-            }, 30);
-            counterObserver.unobserve(el);
-        }
+// ========== ANIMATED COUNTERS (mobile = scroll, desktop = 2s) ==========
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    counters.forEach(stat => {
+        const target = parseInt(stat.dataset.target);
+        if (isNaN(target)) return;
+        let current = 0;
+        const interval = setInterval(() => {
+            current += target / 50;
+            if (current < target) {
+                stat.innerText = Math.floor(current);
+            } else {
+                stat.innerText = target;
+                clearInterval(interval);
+            }
+        }, 30);
     });
-}, { threshold: 0.3 });
-counters.forEach(c => counterObserver.observe(c));
+}
+
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+if (isMobile) {
+    // Mobile : animation au scroll (IntersectionObserver)
+    const counters = document.querySelectorAll('.stat-number');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.dataset.target);
+                let current = 0;
+                const interval = setInterval(() => {
+                    current += target / 50;
+                    if (current < target) el.innerText = Math.floor(current);
+                    else { el.innerText = target; clearInterval(interval); }
+                }, 30);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.3 });
+    counters.forEach(c => counterObserver.observe(c));
+} else {
+    // Desktop : animation 2 secondes après le chargement
+    window.addEventListener('load', function() {
+        setTimeout(animateCounters, 2000);
+    });
+}
 
 // ========== REVEAL ON SCROLL ==========
 const revealElements = document.querySelectorAll('.reveal');
@@ -252,7 +280,7 @@ function initTechZigzagReveal() {
 
 document.addEventListener('DOMContentLoaded', initTechZigzagReveal);
 
-// === FAUX CHARGEMENT (simulation) + DISPARITION QUAND TOUT EST CHARGÉ ===
+// === FAUX CHARGEMENT (simulation) ===
 window.addEventListener('load', function() {
     const loader = document.getElementById('loader-overlay');
     if (loader) {
@@ -265,3 +293,5 @@ window.addEventListener('load', function() {
 }, 2000);
     }
 });
+
+
