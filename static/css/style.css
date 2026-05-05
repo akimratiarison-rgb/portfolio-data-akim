@@ -27,12 +27,7 @@ html {
 }
 
 /* Typing cursor */
-#typed-text {
-    white-space: normal;
-    display: inline-block;
-    min-width: 180px;   /* suffisamment large pour le mot le plus long */
-    overflow: visible;
-}
+
 #typed-text::after {
     content: '';
     animation: blink 0.8s infinite;
