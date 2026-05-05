@@ -318,14 +318,50 @@
 
 <!-- Contact -->
 <section id="contact" class="py-16 reveal">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Prendre En Contact </h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Prendre Contact</h2>
     <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <!-- Colonne gauche : coordonnées -->
         <div class="space-y-6">
-            <div><h3 class="font-semibold text-white">Email</h3><p class="text-gray-400">tratiarisonakiim@gmail.com</p></div>
-            <div><h3 class="font-semibold text-white">Téléphone</h3><p class="text-gray-400">+261 38 49 066 35</p></div>
-            <div><h3 class="font-semibold text-white">Localisation</h3><p class="text-gray-400">Antananarivo, Madagascar</p></div>
-            <div><h3 class="font-semibold text-white">Connect</h3><div class="flex gap-4"><a href="#" class="text-gray-400 hover:text-accent">LinkedIn</a><a href="#" class="text-gray-400 hover:text-accent">GitHub</a><a href="#" class="text-gray-400 hover:text-accent">X</a></div></div>
+            <div>
+                <h3 class="font-semibold text-white">Email</h3>
+                <p class="text-gray-400">tratiarisonakiim@gmail.com</p>
+            </div>
+            <div>
+                <h3 class="font-semibold text-white">Téléphone</h3>
+                <p class="text-gray-400">+261 38 49 066 35</p>
+            </div>
+            <div>
+                <h3 class="font-semibold text-white">Localisation</h3>
+                <p class="text-gray-400">Antananarivo, Madagascar</p>
+            </div>
+            <div>
+                <h3 class="font-semibold text-white">Connect</h3>
+                <div class="flex gap-4">
+                    <a href="#" class="text-gray-400 hover:text-accent">LinkedIn</a>
+                    <a href="#" class="text-gray-400 hover:text-accent">GitHub</a>
+                    <a href="#" class="text-gray-400 hover:text-accent">X</a>
+                </div>
+            </div>
         </div>
+
+        <!-- Colonne droite : badge "Disponible" animé -->
+        <div class="flex flex-col items-center justify-center space-y-6 text-center">
+            <div class="relative">
+                <!-- Anneau pulsant (background) -->
+                <div class="absolute inset-0 rounded-full bg-accent/20 animate-ping-slow"></div>
+                <!-- Cercle central -->
+                <div class="relative w-32 h-32 rounded-full bg-accent/10 border-2 border-accent flex items-center justify-center">
+                    <span class="text-lg">Disponible</span>
+                </div>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-2xl font-bold">Prêt à collaborer</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulaire (placé après la grille, sur toute la largeur) -->
+    <div class="max-w-2xl mx-auto mt-12">
         <form class="space-y-4">
             <input type="text" placeholder="Votre nom" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
             <input type="email" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
@@ -337,6 +373,7 @@
                 </svg>
                 <span>Envoyer le message</span>
             </button>
+        </form>
     </div>
 </section>
 {% endblock %}
