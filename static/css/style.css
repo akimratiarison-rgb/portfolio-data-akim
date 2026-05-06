@@ -706,14 +706,14 @@ section h2::after {
 
 
 
-/* Animation pulsante lente (pour le badge Disponible) */
+/* Animation pulsante lente */
 @keyframes ping-slow {
     0% {
         transform: scale(1);
         opacity: 0.6;
     }
     70% {
-        transform: scale(1.3);
+        transform: scale(1.9);
         opacity: 0;
     }
     100% {
@@ -724,3 +724,106 @@ section h2::after {
 .animate-ping-slow {
     animation: ping-slow 2.5s cubic-bezier(0, 0, 0.9, 1) infinite;
 }
+
+
+/* === SERVICE CARD (01, 02, etc.) === */
+.service-asym {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    transition: all 0.2s ease;
+}
+.service-number-asym {
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: monospace;
+    color: rgba(45, 212, 191, 0.6);
+    line-height: 1.2;
+    min-width: 3rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+.service-content-asym {
+    flex: 1;
+}
+.service-title-asym {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    transition: color 0.2s ease;
+}
+.service-desc-asym {
+    color: #9ca3af;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+/* Tags technologiques */
+.service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.service-tag {
+    font-size: 0.7rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.7rem;
+    border-radius: 2rem;
+    color: #9ca3af;
+    transition: all 0.2s ease;
+}
+/* Effets au survol */
+.service-asym:hover .service-number-asym {
+    transform: translateX(5px);
+    color: #2dd4bf;
+}
+.service-asym:hover .service-title-asym {
+    color: #2dd4bf;
+}
+.service-asym:hover .service-tag {
+    background: rgba(45, 212, 191, 0.15);
+    color: #2dd4bf;
+}
+/* Disposition asymétrique desktop*/
+@media (min-width: 768px) {
+    .services-asymmetric {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+    /* 1 et 3 dans la colonne de gauche, 2 et 4 dans la colonne de droite */
+    .item-1 { grid-column: 1 / 2; grid-row: 1 / 2; }
+    .item-2 { grid-column: 2 / 3; grid-row: 1 / 2; margin-top: 2rem; }  /* décalage vers le bas */
+    .item-3 { grid-column: 1 / 2; grid-row: 2 / 3; }
+    .item-4 { grid-column: 2 / 3; grid-row: 2 / 3; margin-top: 2rem; }
+}
+
+
+.service-title-asym {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.service-title-asym::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #2dd4bf, #0f766e);
+    transition: width 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border-radius: 2px;
+}
+
+.service-asym:hover .service-title-asym::after {
+    width: 100%;
+}
+
+.fa-envelope, .fa-phone-alt, .fa-map-marker-alt, .fa-share-alt {
+    font-size: 1.1rem;
+}
+
+

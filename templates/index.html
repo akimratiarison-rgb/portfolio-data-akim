@@ -65,7 +65,7 @@
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Projets Sélectionnés</h2>
     <div class="grid md:grid-cols-2 gap-8">
         {% for projet in projets %}
-        <div class="bg-card border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:border-accent/40 transition-all group">
+        <div class="bg-card border border-white/10 rounded-2xl p-6 backdrop-blur-lg hover:border-accent/40 bg-transparent/30 transition-all group">
             <!-- <div class="text-4xl mb-3">{{ projet.emoji }}</div> -->
             <div class="text-sm font-mono text-accent mb-2 uppercase tracking-wider"></div>
             <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition">{{ projet.titre }}</h3>
@@ -164,120 +164,48 @@
     </section>
 </div>
 
-<!-- SECTION PARCOURS ACADÉMIQUE -->
-<section id="academique" class="py-20 reveal">
-    <div class="max-w-4xl mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Parcours académique</h2>
-        <div class="timeline">
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <div class="flex justify-between items-start flex-wrap gap-2">
-                        <h3 class="text-xl font-bold text-accent">Data & AI</h3>
-                        <span class="text-sm text-gray-400">2025 – présent</span>
-                    </div>
-                    <p class="text-gray-300 mt-2">INSI Antananarivo – 2ème année</p>
-                    <p class="text-gray-400 text-sm mt-1">Machine Learning, Data, Visualisation.</p>
-                </div>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <div class="flex justify-between items-start flex-wrap gap-2">
-                        <h3 class="text-lg font-bold text-accent">ESIIA 2 (Electronique Système Informatique et Intelligence Artficielle)</h3>
-                        <span class="text-sm text-gray-400">2021 – 2023</span>
-                    </div>
-                    <p class="text-gray-300 mt-1">ISPM (Institut Supérieur Polytechnique de Madagascar)</p>
-                    <p class="text-gray-400 text-sm mt-1">Système embarqué, Arduino, Assembleur, C </p>
-                </div>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <div class="flex justify-between items-start flex-wrap gap-2">
-                        <h3 class="text-xl font-bold text-accent">Terminale série D</h3>
-                        <span class="text-sm text-gray-400">2020 - 2021</span>
-                    </div>
-                    <p class="text-gray-300 mt-2">LSPCA (Lycée Saint Pierre Canisius Ambohipo)</p>
-                    <p class="text-gray-400 text-sm mt-1"></p>
-                </div>
-            </div>
-            <!-- Ajoute d’autres étapes -->
-        </div>
-    </div>
-</section>
-
-<!-- SECTION MES SERVICES  -->
+<!-- SECTION MES SERVICES – ORDRE CORRECT SUR MOBILE ET DESKTOP -->
 <section id="services" class="py-24 reveal">
     <div class="max-w-6xl mx-auto px-6">
-        <!-- En-tête avec sous-titre -->
         <div class="text-center mb-16">
-            <span class="text-accent font-mono text-sm uppercase tracking-wider">Mes services</span>
+            <span class="text-accent font-mono text-sm uppercase tracking-wider">Services</span>
             <h2 class="text-4xl md:text-5xl font-bold mt-2">Ce que je vous apporte</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto mt-4">Je vous apporte des solutions sur mesure pour transformer vos données en atouts stratégiques.</p>
+            <p class="text-gray-400 max-w-2xl mx-auto mt-4">"Je vous apporte des solutions sur mesure pour transformer vos données en atouts stratégiques."</p>
+
         </div>
 
-        <!-- Grille asymétrique -->
-        <div class="grid md:grid-cols-2 gap-12 items-start">
-            <!-- Colonne gauche : services 1 et 3 -->
-            <div class="space-y-12">
-                <!-- Service 1 : Analyse de donnees -->
-                <div class="service-block group">
-                    <div class="flex items-start gap-5">
-                        <div class="service-number">01</div>
-                        <div>
-                            <h3 class="text-2xl font-semibold text-white group-hover:text-accent transition">Analyse de données</h3>
-                            <p class="text-gray-400 mt-2 leading-relaxed">
-                                Transformez vos données brutes en informations stratégiques. Identification de tendances clés et d’opportunités pour des décisions éclairées.
-                            </p>
-                        
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 3 : Automatisation -->
-                <div class="service-block group">
-                    <div class="flex items-start gap-5">
-                        <div class="service-number">03</div>
-                        <div>
-                            <h3 class="text-2xl font-semibold text-white group-hover:text-accent transition">Automatisation</h3>
-                            <p class="text-gray-400 mt-2 leading-relaxed">
-                                Éliminez les tâches répétitives et gagnez en productivité. Automatisation de processus (Excel, reporting, scraping) avec Python.
-                            </p>
-                            
-                        </div>
-                    </div>
+        <!-- Grille asymétrique (utilise grid + ordre) -->
+        <div class="services-asymmetric">
+            <!-- Service 1 -->
+            <div class="service-asym item-1">
+                <div class="service-number-asym">01</div>
+                <div class="service-content-asym">
+                    <h3 class="service-title-asym">Analyse de données</h3>
+                    <p class="service-desc-asym">Transformez vos données brutes en informations stratégiques. Identification de tendances clés et d’opportunités pour des décisions éclairées.</p>
                 </div>
             </div>
-
-            <!-- Colonne droite : services 2 et 4-->
-            <div class="space-y-12 md:mt-12">
-                <!-- Service 2 : Dashboards & Visualisation -->
-                <div class="service-block group">
-                    <div class="flex items-start gap-5">
-                        <div class="service-number">02</div>
-                        <div>
-                            <h3 class="text-2xl font-semibold text-white group-hover:text-accent transition">Dashboards & Visualisation</h3>
-                            <p class="text-gray-400 mt-2 leading-relaxed">
-                                Tableaux de bord interactifs pour un suivi en temps réel. Conception avec Power BI, Tableau, Python.
-                            </p>
-                            
-                        </div>
-                    </div>
+            <!-- Service 2 -->
+            <div class="service-asym item-2">
+                <div class="service-number-asym">02</div>
+                <div class="service-content-asym">
+                    <h3 class="service-title-asym">Dashboards & Visualisation</h3>
+                    <p class="service-desc-asym">Tableaux de bord interactifs pour un suivi en temps réel. Conception avec Power BI, Tableau, Python.</p>
                 </div>
-
-                <!-- Service 4 : Machine Learning -->
-                <div class="service-block group">
-                    <div class="flex items-start gap-5">
-                        <div class="service-number">04</div>
-                        <div>
-                            <h3 class="text-2xl font-semibold text-white group-hover:text-accent transition">Machine Learning</h3>
-                            <p class="text-gray-400 mt-2 leading-relaxed">
-                                Développement de modèles prédictifs pour anticiper les tendances, détecter des anomalies et optimiser les performances.
-                            </p>
-        
-                        </div>
-                    </div>
+            </div>
+            <!-- Service 3 -->
+            <div class="service-asym item-3">
+                <div class="service-number-asym">03</div>
+                <div class="service-content-asym">
+                    <h3 class="service-title-asym">Automatisation</h3>
+                    <p class="service-desc-asym">Éliminez les tâches répétitives et gagnez en productivité. Automatisation de processus (Excel, reporting, scraping) avec Python.</p>
+                </div>
+            </div>
+            <!-- Service 4 -->
+            <div class="service-asym item-4">
+                <div class="service-number-asym">04</div>
+                <div class="service-content-asym">
+                    <h3 class="service-title-asym">Machine Learning</h3>
+                    <p class="service-desc-asym">Développement de modèles prédictifs pour anticiper les tendances, détecter des anomalies et optimiser les performances.</p>
                 </div>
             </div>
         </div>
@@ -322,24 +250,40 @@
     <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
         <!-- Colonne gauche : coordonnées -->
         <div class="space-y-6">
-            <div>
-                <h3 class="font-semibold text-white">Email</h3>
-                <p class="text-gray-400">tratiarisonakiim@gmail.com</p>
+            <!-- Email -->
+            <div class="flex items-center gap-3">
+                <i class="fas fa-envelope text-accent w-5"></i>
+                <div>
+                    <h3 class="font-semibold text-white">Email</h3>
+                    <p class="text-gray-400">tratiarisonakiim@gmail.com</p>
+                </div>
             </div>
-            <div>
-                <h3 class="font-semibold text-white">Téléphone</h3>
-                <p class="text-gray-400">+261 38 49 066 35</p>
+            <!-- Téléphone -->
+            <div class="flex items-center gap-3">
+                <i class="fas fa-phone-alt text-accent w-5"></i>
+                <div>
+                    <h3 class="font-semibold text-white">Téléphone</h3>
+                    <p class="text-gray-400">+261 38 49 066 35</p>
+                </div>
             </div>
-            <div>
-                <h3 class="font-semibold text-white">Localisation</h3>
-                <p class="text-gray-400">Antananarivo, Madagascar</p>
+            <!-- Localisation -->
+            <div class="flex items-center gap-3">
+                <i class="fas fa-map-marker-alt text-accent w-5"></i>
+                <div>
+                    <h3 class="font-semibold text-white">Localisation</h3>
+                    <p class="text-gray-400">Antananarivo, Madagascar</p>
+                </div>
             </div>
-            <div>
-                <h3 class="font-semibold text-white">Connect</h3>
-                <div class="flex gap-4">
-                    <a href="#" class="text-gray-400 hover:text-accent">LinkedIn</a>
-                    <a href="#" class="text-gray-400 hover:text-accent">GitHub</a>
-                    <a href="#" class="text-gray-400 hover:text-accent">X</a>
+            <!-- Connect (réseaux sociaux) -->
+            <div class="flex items-center gap-3">
+                <i class="fas fa-share-alt text-accent w-5"></i>
+                <div>
+                    <h3 class="font-semibold text-white">Connect</h3>
+                    <div class="flex gap-4 mt-1">
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-telegram fa-lg"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -351,11 +295,15 @@
                 <div class="absolute inset-0 rounded-full bg-accent/20 animate-ping-slow"></div>
                 <!-- Cercle central -->
                 <div class="relative w-32 h-32 rounded-full bg-accent/10 border-2 border-accent flex items-center justify-center">
-                    <span class="text-lg">Disponible</span>
+                    <span class="text-sm">Prêt à collaborer ?</span>
                 </div>
             </div>
-            <div class="space-y-2">
-                <h3 class="text-2xl font-bold">Prêt à collaborer</h3>
+            <div class="flex items-center gap-2">
+                    <span class= "font-bold text-xl">Alors contacter moi</span>
+                    <img src="{{ url_for('static', filename='images/rougissant.gif') }}" 
+                        alt="icône animée" 
+                        class="w-9 h-9  inline-block rounded-full ">
+                </a>
             </div>
         </div>
     </div>
