@@ -2,7 +2,7 @@
 
 {% block content %}
 <!-- Hero section (photo à droite) -->
-<section id="hero" class="flex flex-col md:grid md:grid-cols-2 gap-10 items-center pt-4 reveal">
+<section id="hero" class="flex flex-col md:grid md:grid-cols-2 gap-20 items-center pt-4 reveal">
     <!-- Photo (première sur mobile, deuxième sur desktop) -->
     <div class="order-1 md:order-2 flex justify-center">
         <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accent/30 shadow-2xl shadow-accent/10">
@@ -12,13 +12,13 @@
     <!-- Texte (deuxième sur mobile, premier sur desktop) -->
     <div class="order-2 md:order-1 space-y-5">
         <p class="text-accent text-xl uppercase tracking-wider font-sans">Data Analyst & AI Student</p>
-        <h1 class="text-5xl md:text-7xl font-bold leading-tight text-white">
+        <h1 class="text-7xl md:text-8xl font-bold leading-tight text-white">
             TURNING <br>
             <span class="text-gray-500">DATA INTO</span><br>
             INSIGHTS<span class="text-accent">.</span>
         </h1>
-        <p class="text-gray-400 text-lg w-full">
-            Je suis Akim. Je prends vos données, les analyse et les transforme en insights clairs et actionnables.<br>
+        <p class="text-gray-400 text-xl w-full">
+            Je suis Akim, data analyst en formation IA. Je transforme vos données en décisions rapides et mesurables.<br>
             Grâce <span id="typed-text" class="font-mono border-r-2 border-accent"></span>
         </p>
         <a href="#projets" class="inline-flex items-center gap-2 bg-accent/10 backdrop-blur-sm border border-accent/30 text-gray px-6 py-3 rounded-full hover:bg-accent/20 transition">
@@ -39,7 +39,7 @@
 <div class="swing-container-cv reveal mt-8 mb-12">
     <div class="tady-cv"></div>
     <div class="cv-button-wrapper">
-        <a href="{{ url_for('static', filename='files/CV_Akim.pdf') }}" download class="cv-button inline-flex items-center gap-3 bg-accent/10 backdrop-blur-sm border border-accent/30 text-gray px-8 py-4 rounded-full hover:bg-accent/20 transition-all duration-300 text-lg font-semibold shadow-lg">
+        <a href="{{ url_for('static', filename='files/CV_Akim.pdf') }}" download class="cv-button inline-flex items-center gap-3 bg-accent/10 backdrop-blur-sm border border-accent/30 text-gray px-8 py-4 rounded-full hover:bg-accent/20 transition-all duration-300 text-lg font-semibold">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 4h16v16H4V4z" />
             </svg>
@@ -47,6 +47,8 @@
         </a>
     </div>
 </div>
+
+
 
 <!-- Expertise (barres de progression) -->
 <section id="expertise" class="py-16 reveal">
@@ -67,9 +69,9 @@
         {% for projet in projets %}
         <div class="bg-card border border-white/10 rounded-2xl p-6 backdrop-blur-lg hover:border-accent/40 bg-transparent/30 transition-all group">
             <!-- <div class="text-4xl mb-3">{{ projet.emoji }}</div> -->
-            <div class="text-sm font-mono text-accent mb-2 uppercase tracking-wider"></div>
+            <div class="text-lg font-mono text-accent mb-2 uppercase tracking-wider"></div>
             <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition">{{ projet.titre }}</h3>
-            <p class="text-gray-400 text-sm leading-relaxed mb-5">{{ projet.description }}</p>
+            <p class="text-gray-400 text-lg leading-relaxed mb-5">{{ projet.description }}</p>
             <div class="flex flex-wrap gap-2 mb-5">
                 {% for tech in projet.technos %}
                 <span class="px-3 py-1 bg-white/5 text-gray-300 text-xs rounded-full border border-white/5">{{ tech }}</span>
@@ -170,7 +172,7 @@
         <div class="text-center mb-16">
             <span class="text-accent font-mono text-sm uppercase tracking-wider">Services</span>
             <h2 class="text-4xl md:text-5xl font-bold mt-2">Ce que je vous apporte</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto mt-4">"Je vous apporte des solutions sur mesure pour transformer vos données en atouts stratégiques."</p>
+            <p class="text-gray-400 max-w-2xl mx-auto mt-4">Je vous apporte des solutions sur mesure pour transformer vos données en atouts stratégiques.</p>
 
         </div>
 
@@ -246,7 +248,7 @@
 
 <!-- Contact -->
 <section id="contact" class="py-16 reveal">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Prendre Contact</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Me prendre en Contact</h2>
     <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
         <!-- Colonne gauche : coordonnées -->
         <div class="space-y-6">

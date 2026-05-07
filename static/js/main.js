@@ -5,8 +5,10 @@ const navLinks = document.querySelectorAll('.nav-link');
 if (navbar && navLinks.length) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 10) {
+            navbar.classList.add('navbar-scrolled');
             navLinks.forEach(link => link.classList.add('nav-link-scrolled'));
         } else {
+            navbar.classList.remove('navbar-scrolled');
             navLinks.forEach(link => link.classList.remove('nav-link-scrolled'));
         }
     });
@@ -83,6 +85,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+
 
 // ========== ANIMATED COUNTERS (mobile = scroll, desktop = 2s) ==========
 function animateCounters() {
@@ -282,7 +286,7 @@ document.addEventListener('DOMContentLoaded', initTechZigzagReveal);
 
 // === FAUX CHARGEMENT (simulation) ===
 window.addEventListener('load', function() {
-    const loader = document.getElementById('loader-overlay');
+    const loader = document.getElementById('charger');
     if (loader) {
         // Disparition avec fondu après 0.5s (pour que l’utilisateur voie la barre au moins un instant)
         setTimeout(() => {

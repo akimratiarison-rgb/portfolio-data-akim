@@ -33,23 +33,27 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body class=" text-gray-300 font-sans antialiased"
+        
       style="background-image: url('{{ url_for('static', filename='images/background.webp') }}'); background-size: cover; background-attachment: fixed; background-position: center;">
-
+    
       <!-- LOADER -->
-    <div id="loader-overlay">
+    <div id="charger">
         <div class="loader-bar"></div>
         <div class="loader-text text-sans ">Chargement du site...</div>
     </div>
 
     <!-- Voile sombre pour lisibilité (optionnel) -->
-    <div class="fixed inset-0 bg-black/55 pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-black/60 pointer-events-none z-0"></div>
 
     <!-- Navigation fixe -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 bg-black/80 border-b border-white/5">
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-transparent border-b border-white/5">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
             <img src="{{ url_for('static', filename='images/Firefly.png') }}" alt="Logo" class="h-6 w-auto rounded-full">
             <span class="signature-name text-2xl md:text-3xl text-white">AKIM RATIARISON</span>
+            <button id="lang-btn" class="ml-1 px-1 py-1 rounded-full transition clignoteVert">
+                
+            </button>
         </div>
             <div class="hidden md:flex gap-8 text-sm uppercase tracking-wide">
                 <a href="#hero" class="nav-link">Accueil</a>
@@ -101,6 +105,8 @@
             </div>
         </div>
     </footer>
+    <script src="{{ url_for('static', filename='js/translations.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
