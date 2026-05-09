@@ -80,6 +80,15 @@ html {
     border-radius: 3px;
 }
 
+
+#hero h1{
+    font-size: 4rem;
+    /*margin: 17px;*/
+}
+
+
+
+
 /* ========== CARROUSEL HORIZONTAL INFINI ========== */
 /*.horizontal-scroll {
     width: 100%;
@@ -160,7 +169,7 @@ html {
 }
 .tady {
     position: absolute;
-    top: -25px;
+    top: 10px;
     left: 50%;
     width: 1px;
     height: 25px;
@@ -357,7 +366,7 @@ section h2::after {
     }
     /* Ajuster le texte des paragraphes */
     p, li, .text-muted {
-        font-size: 0.9rem !important;
+        font-size: 1rem !important;
     }
     /* Pour les cartes et badges */
     .card-project h3 {
@@ -525,7 +534,7 @@ section h2::after {
 }
 .tech-zigzag-item {
     background: rgba(17, 17, 17, 0.4);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(1px);
     border: 1px solid rgba(45, 212, 191, 0.2);
     border-radius: 1.5rem;
     padding: 1rem 1.5rem;
@@ -874,5 +883,7 @@ section h2::after {
   animation: clignoteVert 1s infinite;
 }
 
-
+footer {
+    background: rgba(8, 8, 12, 0.432) !important;
+}
 

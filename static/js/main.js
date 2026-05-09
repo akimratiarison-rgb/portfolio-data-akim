@@ -2,17 +2,22 @@
 const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 
-if (navbar && navLinks.length) {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 10) {
-            navbar.classList.add('navbar-scrolled');
-            navLinks.forEach(link => link.classList.add('nav-link-scrolled'));
-        } else {
-            navbar.classList.remove('navbar-scrolled');
-            navLinks.forEach(link => link.classList.remove('nav-link-scrolled'));
-        }
-    });
-}
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(() => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('navbar-scrolled');
+                navLinks.forEach(link => link.classList.add('nav-link-scrolled'));
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+                navLinks.forEach(link => link.classList.remove('nav-link-scrolled'));
+            }
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
 
 // ========== TYPING EFFECT (hero) ==========
 const typedWords = ['à Python & SQL.', 'à Google Analytics.', 'à Looker Studio.', 'au Machine Learning.'];
@@ -90,22 +95,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // ========== ANIMATED COUNTERS (mobile = scroll, desktop = 2s) ==========
 function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    counters.forEach(stat => {
-        const target = parseInt(stat.dataset.target);
-        if (isNaN(target)) return;
-        let current = 0;
-        const interval = setInterval(() => {
-            current += target / 50;
-            if (current < target) {
-                stat.innerText = Math.floor(current);
-            } else {
-                stat.innerText = target;
-                clearInterval(interval);
+    const stats = document.querySelectorAll('.stat-number');
+    const targets = Array.from(stats).map(stat => parseInt(stat.dataset.target));
+    let currents = targets.map(() => 0);
+    const increments = targets.map(t => t / 50);
+    let step = 0;
+    const interval = setInterval(() => {
+        let allDone = true;
+        stats.forEach((stat, idx) => {
+            if (currents[idx] < targets[idx]) {
+                allDone = false;
+                currents[idx] += increments[idx];
+                stat.innerText = Math.floor(currents[idx]);
             }
-        }, 30);
-    });
+        });
+        if (allDone) clearInterval(interval);
+    }, 30);
 }
+
+
 
 const isMobile = window.matchMedia('(max-width: 768px)').matches;
 

@@ -13,7 +13,7 @@ PROJETS = [
         "description": "ohatra",
         "technos": ["Deep learning"],
         "lien": "#",
-        "emoji": "🤖",
+        "image": "dashboard.png",    
         "highlight": True   
     },
     {
@@ -21,7 +21,7 @@ PROJETS = [
         "description": "Prédiction de prix immobiliers avec analyse exploratoire et visualisations Matplotlib.",
         "technos": ["Python", "NumPy", "Matplotlib"],
         "lien": "#",
-        "emoji": "📈",
+        "image": "powerbi.png",
         "highlight": False
     },
     {
@@ -29,15 +29,24 @@ PROJETS = [
         "description": "aiza koa.",
         "technos": ["no no no "],
         "lien": "#",
-        "emoji": "📊",
+        "image": "dashboard.png",
         "highlight": False
     },
+    {
+        "titre": "Mbola !",
+        "description": "aiza koa.",
+        "technos": ["no no no "],
+        "lien": "#",
+        "image": "dashboard.png",
+        "highlight": False
+    },
+   
     {
         "titre": "Mitady !",
         "description": "tsy aiko.",
         "technos": ["streamlit ?"],
         "lien": "#",
-        "emoji": "⏳",
+        "image": "dashboard.png",
         "highlight": True
     },
 {
@@ -45,7 +54,6 @@ PROJETS = [
 "description": "hevitra mety",
 "technos": ["Power BI"],
 "lien": "#",
-"emoji": "📊",
 "highlight": False
 }
 ]
