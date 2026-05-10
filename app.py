@@ -1,19 +1,39 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 from flask_mail import Mail, Message
+import json
+import os
 
 app = Flask(__name__)
 
-# ========== CONFIGURATION EMAIL ==========
+# ========== CONFIGURATION GÉNÉRALE ==========
+app.config['SECRET_KEY'] = 'ma-super-cle-secrete-pour-session'  # nécessaire pour la session
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'tratiarisonakiim@gmail.com'
-app.config['MAIL_PASSWORD'] = 'w r g c o j n s f m t q p q s y'   # ← ton mot de passe (sans espaces ? vérifie)
+app.config['MAIL_PASSWORD'] = 'wrgcojnsfmtqpqsy'  # sans espaces
 app.config['MAIL_DEFAULT_SENDER'] = 'tratiarisonakiim@gmail.com'
 
 mail = Mail(app)
 
-# ========== MAINTENANCE : Ajoutez / modifiez vos projets ici ==========
+# ========== SYSTÈME DE TRADUCTION (JSON) ==========
+# Charge les traductions depuis le fichier translations.json
+with open(os.path.join(app.root_path, 'translations.json'), 'r', encoding='utf-8') as f:
+    translations = json.load(f)
+
+def _(text):
+    """Fonction de traduction : retourne le texte dans la langue de la session."""
+    lang = session.get('lang', 'fr')
+    return translations.get(lang, {}).get(text, text)
+
+# Route pour changer la langue
+@app.route('/language/<lang>')
+def set_language(lang):
+    if lang in ['fr', 'en']:
+        session['lang'] = lang
+    return redirect(request.referrer or url_for('index'))
+
+# ========== DONNÉES ==========
 PROJETS = [
     {
         "titre": "Ohatra oa",
@@ -64,7 +84,6 @@ PROJETS = [
     }
 ]
 
-# ========== MAINTENANCE : Ajout certifications ici ==========
 CERTIFICATIONS = [
     {
         "titre": "Data Analyst : Career Preparation ",
@@ -92,7 +111,6 @@ CERTIFICATIONS = [
     }
 ]
 
-# ========== SECTION COMPÉTENCES ==========
 COMPETENCES = {
     "Langages de programmation": ["Python", "JavaScript", "SQL"],
     "Librairies & Frameworks Python": ["NumPy", "Pandas","Scrapy", "Matplotlib", "Scikit-learn", "BeautifulSoup", "Flask", "Streamlit", "Jinja2"],
@@ -104,9 +122,10 @@ COMPETENCES = {
     "Collection de données": ["Web Scraping"]
 }
 
+# ========== ROUTES ==========
 @app.route("/")
 def index():
-    return render_template("index.html", projets=PROJETS, certifs=CERTIFICATIONS, competences=COMPETENCES)
+    return render_template("index.html", projets=PROJETS, certifs=CERTIFICATIONS, competences=COMPETENCES, _=_)
 
 @app.route("/test")
 def test():

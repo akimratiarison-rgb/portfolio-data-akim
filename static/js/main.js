@@ -20,7 +20,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ========== TYPING EFFECT (hero) ==========
-const typedWords = ['à Python & SQL.', 'à Google Analytics.', 'à Looker Studio.', 'au Machine Learning.'];
+const typedWords = [' Python & SQL.', ' Google Analytics.', 'Looker Studio.', 'Machine Learning.'];
 let wordIndex = 0;
 let indexeo = 0;
 let isDeleting = false;

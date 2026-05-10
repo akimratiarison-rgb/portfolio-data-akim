@@ -53,11 +53,14 @@
                 <a id="lang-btn" class="absolute ml-1 px-1 py-1 rounded-full transition clignoteVert"></a>
             </div>
             <div class="hidden md:flex gap-8 text-sm uppercase tracking-wide">
-                <a href="#hero" class="nav-link">Accueil</a>
-                <a href="#projets" class="nav-link">Projets</a>
-                <a href="#certifs" class="nav-link">Certifications</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#hero" class="nav-link">{{ _('Accueil') }}</a>
+                <a href="#projets" class="nav-link">{{ _('Projets') }}</a>
+                <a href="#certifs" class="nav-link">{{ _('Certifications') }}</a>
+                <a href="#competences" class="nav-link">{{ _('Compétences') }}</a>
+                <div class="flex gap-2 ml-4">
+                    <a href="{{ url_for('set_language', lang='fr') }}" class="text-sm hover:text-accent">FR</a>
+                    <a href="{{ url_for('set_language', lang='en') }}" class="text-sm hover:text-accent">EN</a>
+                </div>
             </div>
             <button id="menu-btn" class="md:hidden text-gray-300 focus:outline-none">
                 <div class="hamburger-icon">
@@ -69,11 +72,14 @@
         </div>
         <!-- Menu mobile -->
         <div id="mobile-menu" class="hidden md:hidden bg-dark/35 backdrop-blur-md border-t border-white/5 py-3 text-center">
-            <a href="#hero" class="block px-6 py-2 hover:bg-white/5">Accueil</a>
-            <a href="#projets" class="block px-6 py-2 hover:bg-white/5">Projets</a>
-            <a href="#certifs" class="block px-6 py-2 hover:bg-white/5">Certifications</a>
-            <a href="#expertise" class="block px-6 py-2 hover:bg-white/5">Expertise</a>
-            <a href="#contact" class="block px-6 py-2 hover:bg-white/5">Contact</a>
+            <a href="#hero" class="nav-link">{{ _('Accueil') }}</a>
+            <a href="#projets" class="nav-link">{{ _('Projets') }}</a>
+            <a href="#certifs" class="nav-link">{{ _('Certifications') }}</a>
+            <a href="#competences" class="nav-link">{{ _('Compétences') }}</a>
+             <div class="flex gap-2 ml-4">
+                <a href="{{ url_for('set_language', lang='fr') }}" class="text-sm hover:text-accent">FR</a>
+                <a href="{{ url_for('set_language', lang='en') }}" class="text-sm hover:text-accent">EN</a>
+            </div>
         </div>
     </nav>
 
