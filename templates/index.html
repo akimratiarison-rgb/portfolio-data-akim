@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Hero section (photo à droite) -->
+
+<!-- Hero section -->
 <section id="hero" class="relative flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-10 items-center pt-4 pb-10 md:pb-16 reveal px-4 md:px-15">
-  
-  <!-- Fond décoratif très discret -->
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(45,212,191,0.06),transparent_60%)] pointer-events-none"></div>
+
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(50,212,191,0.06),transparent_60%)] pointer-events-none"></div>
 
   <!-- Photo (passe à droite sur desktop) -->
   <div class="order-1 md:order-2 flex justify-center z-10">
@@ -16,13 +16,9 @@
 
   <!-- Texte -->
   <div class="order-2 md:order-1 space-y-5 z-10 text-center md:text-left">
-    <p class="text-accent text-sm sm:text-lg md:text-xl uppercase tracking-[0.35em] font-medium">
-      Data Analyst &amp; AI Student
-    </p>
+    <p class="text-accent text-sm sm:text-lg md:text-xl uppercase tracking-[0.35em] font-medium">Data Analyst &amp; AI Student</p>
     <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-white">
-      TURNING <br class="hidden xs:block">
-      <span class="text-gray-400">DATA INTO</span><br class="hidden xs:block">
-      INSIGHTS<span class="text-accent">.</span>
+      TURNING <br class="hidden xs:block"><span class="text-gray-400">DATA INTO</span><br class="hidden xs:block">INSIGHTS<span class="text-accent">.</span>
     </h1>
     <p class="text-gray-400 text-base md:text-lg lg:text-xl max-w-xl mx-auto md:mx-0">
       Je suis Akim, data analyst en formation IA. Je transforme vos données en décisions rapides et mesurables.<br>
@@ -35,21 +31,20 @@
   </div>
 </section>
 
-<!-- Statistiques -->
+<!-- Stats rapides -->
 <div class="grid grid-cols-3 gap-4 text-center py-12 border-y border-white/10 my-12 reveal px-6 md:px-12">
     <div><div class="stat-number text-4xl font-bold" data-target="5">0</div><p class="text-accent">Projets</p></div>
     <div><div class="stat-number text-4xl font-bold" data-target="8">0</div><p class="text-accent">Catégories</p></div>
     <div><div class="stat-number text-4xl font-bold" data-target="22">0</div><p class="text-accent">Technologies</p></div>
 </div>
 
-<!-- BOUTON CV SUSPENDU -->
+<!-- Bouton CV flottant -->
 <div class="swing-container-cv reveal mt-8 mb-12 px-6 md:px-12">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(50,212,191,0.06),transparent_60%)] pointer-events-none"></div>
     <div class="tady-cv"></div>
     <div class="cv-button-wrapper">
         <a href="{{ url_for('static', filename='files/CV_Akim.pdf') }}" download class="cv-button inline-flex items-center gap-3 bg-accent/10 backdrop-blur-sm border border-accent/30 text-gray px-8 py-4 rounded-full hover:bg-accent/20 transition-all duration-300 text-lg font-semibold">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 4h16v16H4V4z" />
-            </svg>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 4h16v16H4V4z" /></svg>
             Télécharger mon CV
         </a>
     </div>
@@ -69,7 +64,7 @@
     </div>
 </section>
 
-<!-- Style 10 modifié : image pleine hauteur à gauche -->
+<!-- Projets avec image à gauche -->
 <section id="projets" class="py-24 bg-transparent">
     <div class="max-w-5xl mx-auto px-6 md:px-12">
         <div class="text-center mb-16">
@@ -80,21 +75,14 @@
         <div class="project-focus-container reveal">
             {% for projet in projets %}
             <div class="project-card group bg-transparent border border-white/25 rounded-2xl overflow-hidden hover:border-accent/40 transition-all duration-300 mb-8">
-                <!-- Flex parent avec alignement stretch pour que les deux colonnes aient la même hauteur -->
                 <div class="flex flex-col md:flex-row items-stretch">
-                    <!-- Colonne gauche : image pleine hauteur, sans padding -->
                     <div class="md:w-1/3 bg-gradient-to-br from-accent/5 to-transparent overflow-hidden">
                         {% if projet.image %}
-                            <img src="{{ url_for('static', filename='images/projets/' + projet.image) }}" 
-                                 alt="{{ projet.titre }}" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="{{ url_for('static', filename='images/projets/' + projet.image) }}" alt="{{ projet.titre }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         {% else %}
-                            <div class="w-full h-full min-h-[200px] bg-accent/10 flex items-center justify-center text-5xl">
-                                📁
-                            </div>
+                            <div class="w-full h-full min-h-[200px] bg-accent/10 flex items-center justify-center text-5xl">📁</div>
                         {% endif %}
                     </div>
-                    <!-- Colonne droite : contenu texte -->
                     <div class="md:w-2/3 p-8">
                         <h3 class="text-2xl font-bold group-hover:text-accent transition mb-2">{{ projet.titre }}</h3>
                         <p class="text-gray-300 leading-relaxed mb-4">{{ projet.description }}</p>
@@ -103,7 +91,8 @@
                             <span class="px-3 py-1 bg-[#1a1a1a] text-gray-400 text-xs rounded-full">{{ tech }}</span>
                             {% endfor %}
                         </div>
-                        <a href="{{ projet.lien }}" class="inline-flex items-center gap-2 text-accent hover:gap-3 transition-all">Explorer →</a>
+                        <a href="{{ projet.lien }}" class="inline-flex items-center gap-2 text-accent hover:gap-3 transition-all">Explorer</a>
+                        <img src="{{ url_for('static', filename='images/oeil.gif') }}" alt="icône animée" class="w-5 h-5 inline-block rounded-full">
                     </div>
                 </div>
             </div>
@@ -112,7 +101,7 @@
     </div>
 </section>
 
-<!-- Certifications – Design Pro -->
+<!-- Certifications -->
 <section id="certifs" class="py-20 bg-gradient-to-b from-white/10 to-transparent rounded-3xl reveal">
     <div class="max-w-6xl mx-auto px-6 md:px-12">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Certifications</h2>
@@ -121,31 +110,22 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for certif in certifs %}
             <div class="group relative bg-transparent/25 backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-accent/20 hover:bg-white/8 hover:shadow-xl hover:shadow-accent/1">
-                <!-- En-tête avec icône et date -->
                 <div class="flex items-start justify-between mb-4">
-                    <div class="w-14 h-14 rounded-3xl  flex items-center justify-center text-4xl shadow-md ">
+                    <div class="w-14 h-14 rounded-3xl flex items-center justify-center text-4xl shadow-md">
                         {% if certif.image %}
                         <img src="{{ url_for('static', filename='images/' + certif.image) }}" class="w-15 h-15 object-contain rounded-xl">
                         {% else %}
                         🎓
                         {% endif %}
                     </div>
-                    <span class="text-xs font-mono px-2 py-1 rounded-full  text-white border border-accent/30">{{ certif.date }}</span>
+                    <span class="text-xs font-mono px-2 py-1 rounded-full text-white border border-accent/30">{{ certif.date }}</span>
                 </div>
-                
-                <!-- Titre et organisme -->
                 <h3 class="text-xl font-bold mb-2 group-hover:text-accent transition">{{ certif.titre }}</h3>
                 <p class="text-sm text-gray-400 mb-4">{{ certif.organisme }}</p>
-                
-                <!-- Séparateur décoratif -->
                 <div class="w-12 h-0.5 bg-accent/25 rounded-full mb-4 group-hover:w-20 transition-all duration-300"></div>
-                
-                <!-- Bouton -->
                 <a href="{{ certif.lien }}" target="_blank" class="inline-flex items-center gap-2 text-sm text-accent hover:gap-3 transition-all">
                     <span>Voir la certification</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </a>
             </div>
             {% endfor %}
@@ -153,7 +133,7 @@
     </div>
 </section>
 
-<!-- Technologies & outils – amélioré : zigzag centré avec largeur raisonnable -->
+<!-- Technologies & outils -->
 <section id="tech-outils" class="py-20">
     <div class="max-w-5xl mx-auto px-6 md:px-12">
         <h2 class="text-4xl md:text-4xl font-bold text-center mb-12">Technologies & outils</h2>
@@ -172,7 +152,7 @@
     </div>
 </section>
 
-<!-- À propos – amélioré : contenu centré avec max-width -->
+<!-- À propos -->
 <div class="swing-container reveal">
     <div class="tady"></div>
     <section id="a-propos" class="py-12 md:py-16">
@@ -185,9 +165,7 @@
                         </div>
                     </div>
                     <div class="flex-1 text-center md:text-left">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-emerald-400 bg-clip-text text-transparent">
-                            Qui suis-je ?
-                        </h2>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-emerald-400 bg-clip-text text-transparent">Qui suis-je ?</h2>
                         <div class="space-y-3 text-gray-300 text-base md:text-lg leading-relaxed">
                             <p class="typed-paragraph" data-text="Étudiant en 2ème année de Data & Intelligence Artificielle à l'INSI Antananarivo, je construis une expertise solide à l'intersection de l'analyse de données, du Machine Learning et de la visualisation."></p>
                             <p class="typed-paragraph" data-text="Je transforme des jeux de données complexes en insights actionnables que ce soit à travers des modèles prédictifs, des dashboards interactifs ou des analyses exploratoires approfondies."></p>
@@ -241,7 +219,7 @@
     </div>
 </section>
 
-<!-- Disponibilité -->
+<!-- Disponibilité + cercle ML -->
 <div class="max-w-6xl mx-auto px-6 md:px-12 my-20">
     <div class="grid md:grid-cols-2 gap-12 items-center reveal">
         <div class="model-accuracy text-center">
@@ -259,9 +237,7 @@
             <p class="text-sm text-accent font-sans">99% de chances de vous impressionnez</p>
         </div>
         <div class="text-center md:text-left space-y-4">
-            <div class="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-sans border border-accent/30">
-                Disponible
-            </div>
+            <div class="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-sans border border-accent/30">Disponible</div>
             <h2 class="text-3xl md:text-4xl font-bold">Je suis libre pour toute collaboration</h2>
             <p class="text-gray-300 text-lg">Que ce soit pour un projet, un stage ou une mission freelance, je suis ouvert à discuter de vos idées et besoins. Contactez‑moi pour en parler !</p>
             <a href="#contact" class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-full hover:bg-accent-dark transition mt-4">
@@ -279,24 +255,15 @@
             <div class="space-y-6">
                 <div class="flex items-center gap-3">
                     <i class="fas fa-envelope text-accent w-5"></i>
-                    <div>
-                        <h3 class="font-semibold text-white">Email</h3>
-                        <p class="text-gray-400">tratiarisonakiim@gmail.com</p>
-                    </div>
+                    <div><h3 class="font-semibold text-white">Email</h3><p class="text-gray-400">tratiarisonakiim@gmail.com</p></div>
                 </div>
                 <div class="flex items-center gap-3">
                     <i class="fas fa-phone-alt text-accent w-5"></i>
-                    <div>
-                        <h3 class="font-semibold text-white">Téléphone</h3>
-                        <p class="text-gray-400">+261 38 49 066 35</p>
-                    </div>
+                    <div><h3 class="font-semibold text-white">Téléphone</h3><p class="text-gray-400">+261 38 49 066 35</p></div>
                 </div>
                 <div class="flex items-center gap-3">
                     <i class="fas fa-map-marker-alt text-accent w-5"></i>
-                    <div>
-                        <h3 class="font-semibold text-white">Localisation</h3>
-                        <p class="text-gray-400">Antananarivo, Madagascar</p>
-                    </div>
+                    <div><h3 class="font-semibold text-white">Localisation</h3><p class="text-gray-400">Antananarivo, Madagascar</p></div>
                 </div>
                 <div class="flex items-center gap-3">
                     <i class="fas fa-share-alt text-accent w-5"></i>
@@ -324,17 +291,18 @@
             </div>
         </div>
         <div class="max-w-2xl mx-auto mt-12">
-            <form class="space-y-4">
-                <input type="text" placeholder="Votre nom" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
-                <input type="email" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
-                <input type="text" placeholder="Sujet" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
-                <textarea rows="4" placeholder="Message" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none"></textarea>
-                <button type="submit" class="inline-flex items-center gap-2 bg-accent text-black px-6 py-3 rounded-full hover:bg-accent-dark transition shadow-md">
+            <form id="contact-form" class="space-y-4">
+                <input type="text" id="contact-name" placeholder="Votre nom" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+                <input type="email" id="contact-email" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+                <input type="text" id="contact-subject" placeholder="Sujet" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+                <textarea id="contact-message" rows="4" placeholder="Ecrire votre message ici..." class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:border-accent focus:outline-none"></textarea>
+                <button type="submit" class="inline-flex items-center gap-2 bg-accent text-black/80 px-6 py-3 rounded-full hover:bg-accent-dark transition shadow-md justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     <span>Envoyer le message</span>
                 </button>
             </form>
-        </div>
+            
+            <div id="form-status" class="mt-4 text-center text-sm"></div>
     </div>
 </section>
 {% endblock %}

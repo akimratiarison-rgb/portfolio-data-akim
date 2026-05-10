@@ -1,19 +1,26 @@
-
-# app.py
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 
-# ============================================
-# MAINTENANCE : Ajoutez / modifiez vos projets ici
-# ============================================
+# ========== CONFIGURATION EMAIL ==========
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'tratiarisonakiim@gmail.com'
+app.config['MAIL_PASSWORD'] = 'w r g c o j n s f m t q p q s y'   # ← ton mot de passe (sans espaces ? vérifie)
+app.config['MAIL_DEFAULT_SENDER'] = 'tratiarisonakiim@gmail.com'
+
+mail = Mail(app)
+
+# ========== MAINTENANCE : Ajoutez / modifiez vos projets ici ==========
 PROJETS = [
     {
         "titre": "Ohatra oa",
         "description": "ohatra",
         "technos": ["Deep learning"],
         "lien": "#",
-        "image": "dashboard.png",    
+        "image": "anaconda.png",    
         "highlight": True   
     },
     {
@@ -29,7 +36,7 @@ PROJETS = [
         "description": "aiza koa.",
         "technos": ["no no no "],
         "lien": "#",
-        "image": "dashboard.png",
+        "image": "flask.png",
         "highlight": False
     },
     {
@@ -37,10 +44,9 @@ PROJETS = [
         "description": "aiza koa.",
         "technos": ["no no no "],
         "lien": "#",
-        "image": "dashboard.png",
+        "image": "numpy.png",
         "highlight": False
     },
-   
     {
         "titre": "Mitady !",
         "description": "tsy aiko.",
@@ -49,18 +55,16 @@ PROJETS = [
         "image": "dashboard.png",
         "highlight": True
     },
-{
-"titre": "Analyse des ventes Power BI",
-"description": "hevitra mety",
-"technos": ["Power BI"],
-"lien": "#",
-"highlight": False
-}
+    {
+        "titre": "Analyse des ventes Power BI",
+        "description": "hevitra mety",
+        "technos": ["Power BI"],
+        "lien": "#",
+        "highlight": False
+    }
 ]
 
-# ============================================
-# MAINTENANCE : Ajout certifications ici
-# ============================================
+# ========== MAINTENANCE : Ajout certifications ici ==========
 CERTIFICATIONS = [
     {
         "titre": "Data Analyst : Career Preparation ",
@@ -69,7 +73,6 @@ CERTIFICATIONS = [
         "badge": "🏅",
         "lien": "https://cognitiveclass.ai/certificates/384230bc-e72f-4a37-add0-7f91c265d03b",
         "image": "ibm-cert.png"
-        
     },
     {
         "titre": "Google Analytics Certification",
@@ -89,7 +92,7 @@ CERTIFICATIONS = [
     }
 ]
 
-# SECTION COMPÉTENCES
+# ========== SECTION COMPÉTENCES ==========
 COMPETENCES = {
     "Langages de programmation": ["Python", "JavaScript", "SQL"],
     "Librairies & Frameworks Python": ["NumPy", "Pandas","Scrapy", "Matplotlib", "Scikit-learn", "BeautifulSoup", "Flask", "Streamlit", "Jinja2"],
@@ -104,6 +107,34 @@ COMPETENCES = {
 @app.route("/")
 def index():
     return render_template("index.html", projets=PROJETS, certifs=CERTIFICATIONS, competences=COMPETENCES)
+
+@app.route("/test")
+def test():
+    return "Route test OK"
+
+@app.route("/send-message", methods=["POST"])
+def send_message():
+    try:
+        data = request.get_json()
+        name = data.get('name')
+        email = data.get('email')
+        subject = data.get('subject')
+        message = data.get('message')
+        
+        if not all([name, email, subject, message]):
+            return jsonify({"error": "Tous les champs sont requis"}), 400
+        
+        msg = Message(
+            subject=f"Contact Portfolio – {subject}",
+            recipients=['tratiarisonakiim@gmail.com'],
+            body=f"Nom : {name}\nEmail : {email}\n\nMessage :\n{message}",
+            reply_to=email
+        )
+        mail.send(msg)
+        return jsonify({"success": True, "message": "Message envoyé avec succès"}), 200
+    except Exception as e:
+        print(f"Erreur d'envoi : {e}")
+        return jsonify({"error": "Erreur interne, veuillez réessayer"}), 500
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)

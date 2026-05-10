@@ -307,3 +307,58 @@ window.addEventListener('load', function() {
 });
 
 
+// ========== ENVOI FORMULAIRE DE CONTACT ==========
+const contactForm = document.getElementById('contact-form');
+const statusDiv = document.getElementById('form-status');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('contact-name').value.trim();
+        const email = document.getElementById('contact-email').value.trim();
+        const subject = document.getElementById('contact-subject').value.trim();
+        const message = document.getElementById('contact-message').value.trim();
+        
+        // Validation simple
+        if (!name || !email || !subject || !message) {
+            statusDiv.innerHTML = '<span class="text-red-200 lg:text-lg">Tous les champs sont obligatoires.</span>';
+            return;
+        }
+        
+        // Désactiver le bouton pendant l'envoi
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto"></div>';
+        submitBtn.disabled = true;
+        
+        try {
+            const response = await fetch('/send-message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, subject, message })
+            });
+            
+            const result = await response.json();
+            if (response.ok) {
+                statusDiv.innerHTML = `
+                    <div class="animaka">
+                        <svg class="w-6 h-6 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-teal-300 lg:text-lg">Message envoyé ! Je vous répondrai rapidement.</span>
+                    </div>
+                `;
+                contactForm.reset();
+            } else {
+                statusDiv.innerHTML = `<span class="text-red-400 lg:text-lg">❌ ${result.error || 'Erreur inconnue'}</span>`;
+            }
+        } catch (error) {
+            statusDiv.innerHTML = '<span class="text-red-400 lg:text-lg"> Erreur réseau. Veuillez réessayer.</span>';
+        } finally {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+}
+
