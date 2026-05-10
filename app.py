@@ -16,10 +16,16 @@ app.config['MAIL_DEFAULT_SENDER'] = 'tratiarisonakiim@gmail.com'
 
 mail = Mail(app)
 
-# ========== SYSTÈME DE TRADUCTION (JSON) ==========
-# Charge les traductions depuis le fichier translations.json
-with open(os.path.join(app.root_path, 'translations.json'), 'r', encoding='utf-8') as f:
-    translations = json.load(f)
+# ========== SYSTÈME DE TRADUCTION (JSON) – avec chemin absolu ==========
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+translations_path = os.path.join(BASE_DIR, 'translations.json')
+
+try:
+    with open(translations_path, 'r', encoding='utf-8') as f:
+        translations = json.load(f)
+except FileNotFoundError:
+    translations = {"fr": {}, "en": {}}
+    print(f"ERREUR : fichier {translations_path} non trouvé")
 
 def _(text):
     """Fonction de traduction : retourne le texte dans la langue de la session."""
