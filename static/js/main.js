@@ -320,9 +320,16 @@ if (contactForm) {
         const subject = document.getElementById('contact-subject').value.trim();
         const message = document.getElementById('contact-message').value.trim();
         
+        // Messages traduits (depuis window.formMessages défini dans le template)
+        const msgs = window.formMessages || {
+            required: "Tous les champs sont obligatoires.",
+            success: "Message envoyé ! Je vous répondrai rapidement.",
+            networkError: "Erreur réseau. Veuillez réessayer."
+        };
+        
         // Validation simple
         if (!name || !email || !subject || !message) {
-            statusDiv.innerHTML = '<span class="text-red-200 lg:text-lg">Tous les champs sont obligatoires.</span>';
+            statusDiv.innerHTML = `<span class="text-red-200 lg:text-lg">${msgs.required}</span>`;
             return;
         }
         
@@ -346,7 +353,7 @@ if (contactForm) {
                         <svg class="w-6 h-6 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                         </svg>
-                        <span class="text-teal-300 lg:text-lg">Message envoyé ! Je vous répondrai rapidement.</span>
+                        <span class="text-teal-300 lg:text-lg">${msgs.success}</span>
                     </div>
                 `;
                 contactForm.reset();
@@ -354,11 +361,10 @@ if (contactForm) {
                 statusDiv.innerHTML = `<span class="text-red-400 lg:text-lg">❌ ${result.error || 'Erreur inconnue'}</span>`;
             }
         } catch (error) {
-            statusDiv.innerHTML = '<span class="text-red-400 lg:text-lg"> Erreur réseau. Veuillez réessayer.</span>';
+            statusDiv.innerHTML = `<span class="text-red-400 lg:text-lg">${msgs.networkError}</span>`;
         } finally {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
         }
     });
 }
-

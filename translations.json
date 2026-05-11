@@ -42,7 +42,7 @@
         "Développement de modèles prédictifs pour anticiper les tendances, détecter des anomalies et optimiser les performances.": "Développement de modèles prédictifs pour anticiper les tendances, détecter des anomalies et optimiser les performances.",
         "Accuracy": "Accuracy",
         "Modèle ML – Classification": "Modèle ML – Classification",
-        "99% de chances de vous impressionnez": "99% de chances de vous impressionnez",
+        "99% de chances de vous impressionner": "99% de chances de vous impressionner",
         "Disponible": "Disponible",
         "Je suis libre pour toute collaboration": "Je suis libre pour toute collaboration",
         "Que ce soit pour un projet, un stage ou une mission freelance, je suis ouvert à discuter de vos idées et besoins. Contactez‑moi pour en parler !": "Que ce soit pour un projet, un stage ou une mission freelance, je suis ouvert à discuter de vos idées et besoins. Contactez‑moi pour en parler !",
@@ -94,7 +94,12 @@
         "Git": "Git",
         "GitHub": "GitHub",
         "VS Code": "VS Code",
-        "Web Scraping": "Web Scraping"
+        "99% de chances de vous impressionnez": "99% de chances de vous impressionner",
+        "Web Scraping": "Web Scraping",
+        "Je suis Akim, passionné par l’analyse de données et l’Intelligence Artificielle. Je transforme des données complexes en informations claires et exploitables afin d’aider à prendre de meilleures décisions. Je développe des analyses et modèles capables de révéler des tendances, anticiper des comportements et simplifier la compréhension des données. Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact.": "Je suis Akim, passionné par l’analyse de données et l’Intelligence Artificielle. Je transforme des données complexes en informations claires et exploitables afin d’aider à prendre de meilleures décisions. Je développe des analyses et modèles capables de révéler des tendances, anticiper des comportements et simplifier la compréhension des données. Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact.",
+        "Tous les champs sont obligatoires.": "Tous les champs sont obligatoires.",
+        "Message envoyé ! Je vous répondrai rapidement.": "Message envoyé ! Je vous répondrai rapidement.",
+        "Erreur réseau. Veuillez réessayer.": "Erreur réseau. Veuillez réessayer."
     },
     "en": {
         "Akim": "Akim",
@@ -139,7 +144,7 @@
         "Développement de modèles prédictifs pour anticiper les tendances, détecter des anomalies et optimiser les performances.": "Development of predictive models to forecast trends, detect anomalies, and optimize performance.",
         "Accuracy": "Accuracy",
         "Modèle ML – Classification": "ML Model – Classification",
-        "99% de chances de vous impressionnez": "99% chance to impress you",
+        "99% de chances de vous impressionner": "99% chance to impress you",
         "Disponible": "Available",
         "Je suis libre pour toute collaboration": "I am free for any collaboration",
         "Que ce soit pour un projet, un stage ou une mission freelance, je suis ouvert à discuter de vos idées et besoins. Contactez‑moi pour en parler !": "Whether for a project, internship, or freelance assignment, I am open to discussing your ideas and needs. Contact me to talk about it!",
@@ -191,6 +196,11 @@
         "Git": "Git",
         "GitHub": "GitHub",
         "VS Code": "VS Code",
-        "Web Scraping": "Web Scraping"
+        "Web Scraping": "Web Scraping",
+        "Je suis Akim, passionné par l’analyse de données et l’Intelligence Artificielle. Je transforme des données complexes en informations claires et exploitables afin d’aider à prendre de meilleures décisions. Je développe des analyses et modèles capables de révéler des tendances, anticiper des comportements et simplifier la compréhension des données. Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact.": "I am Akim, passionate about data analysis and Artificial Intelligence. I transform complex data into clear and actionable insights to help make better decisions. I develop analyses and models capable of revealing trends, anticipating behaviors, and simplifying data understanding. My approach is simple: make data useful, understandable, and impact-oriented.",
+        "Tous les champs sont obligatoires.": "All fields are required.",
+        "Message envoyé ! Je vous répondrai rapidement.": "Message sent! I will reply soon.",
+        "Erreur réseau. Veuillez réessayer.": "Network error. Please try again."
+        
     }
 }
