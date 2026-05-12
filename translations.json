@@ -96,8 +96,10 @@
         "VS Code": "VS Code",
         "99% de chances de vous impressionnez": "99% de chances de vous impressionner",
         "Web Scraping": "Web Scraping",
-        "Je suis Akim, passionné par l’analyse de données et l’Intelligence Artificielle. Je transforme des données complexes en informations claires et exploitables afin d’aider à prendre de meilleures décisions. Je développe des analyses et modèles capables de révéler des tendances, anticiper des comportements et simplifier la compréhension des données. Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact.": "Je suis Akim, passionné par l’analyse de données et l’Intelligence Artificielle. Je transforme des données complexes en informations claires et exploitables afin d’aider à prendre de meilleures décisions. Je développe des analyses et modèles capables de révéler des tendances, anticiper des comportements et simplifier la compréhension des données. Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact.",
+        "suis Akim, passionné par l’analyse de données et l’Intelligence Artificielle. Je transforme des données complexes en informations claires et exploitables afin d’aider à prendre de meilleures décisions. Je développe des analyses et modèles capables de révéler des tendances, anticiper des comportements et simplifier la compréhension des données.": "suis Akim, passionné par l’analyse de données et l’Intelligence Artificielle. Je transforme des données complexes en informations claires et exploitables afin d’aider à prendre de meilleures décisions. Je développe des analyses et modèles capables de révéler des tendances, anticiper des comportements et simplifier la compréhension des données.",
         "Tous les champs sont obligatoires.": "Tous les champs sont obligatoires.",
+        "Je": "Je",
+        "Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact." : "Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact.",
         "Message envoyé ! Je vous répondrai rapidement.": "Message envoyé ! Je vous répondrai rapidement.",
         "Erreur réseau. Veuillez réessayer.": "Erreur réseau. Veuillez réessayer."
     },
@@ -197,8 +199,10 @@
         "GitHub": "GitHub",
         "VS Code": "VS Code",
         "Web Scraping": "Web Scraping",
-        "Je suis Akim, passionné par l’analyse de données et l’Intelligence Artificielle. Je transforme des données complexes en informations claires et exploitables afin d’aider à prendre de meilleures décisions. Je développe des analyses et modèles capables de révéler des tendances, anticiper des comportements et simplifier la compréhension des données. Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact.": "I am Akim, passionate about data analysis and Artificial Intelligence. I transform complex data into clear and actionable insights to help make better decisions. I develop analyses and models capable of revealing trends, anticipating behaviors, and simplifying data understanding. My approach is simple: make data useful, understandable, and impact-oriented.",
+        "suis Akim, passionné par l’analyse de données et l’Intelligence Artificielle. Je transforme des données complexes en informations claires et exploitables afin d’aider à prendre de meilleures décisions. Je développe des analyses et modèles capables de révéler des tendances, anticiper des comportements et simplifier la compréhension des données." : "am Akim, passionate about data analysis and Artificial Intelligence. I turn complex data into clear and actionable information to help make better decisions. I develop analyses and models capable of revealing trends, anticipating behaviors, and simplifying data understanding.",
         "Tous les champs sont obligatoires.": "All fields are required.",
+        "Je": "I",
+        "Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact." : "My approach is simple: make data useful, understandable, and impact-oriented.",    
         "Message envoyé ! Je vous répondrai rapidement.": "Message sent! I will reply soon.",
         "Erreur réseau. Veuillez réessayer.": "Network error. Please try again."
         
