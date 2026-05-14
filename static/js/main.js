@@ -368,3 +368,22 @@ if (contactForm) {
         }
     });
 }
+
+
+
+// Gestion du dropdown de langue (mobile)
+const langBtn = document.getElementById('lang-dropdown-btn');
+const langMenu = document.getElementById('lang-dropdown-menu');
+
+if (langBtn && langMenu) {
+    langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langMenu.classList.toggle('hidden');
+    });
+    // Fermer le dropdown si on clique ailleurs
+    document.addEventListener('click', () => {
+        langMenu.classList.add('hidden');
+    });
+    langMenu.addEventListener('click', (e) => e.stopPropagation());
+}
+

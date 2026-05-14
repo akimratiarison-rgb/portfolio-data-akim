@@ -32,6 +32,11 @@ def _(text):
     lang = session.get('lang', 'fr')
     return translations.get(lang, {}).get(text, text)
 
+# ========== CONTEXT PROCESSOR pour la langue active ==========
+@app.context_processor
+def inject_current_lang():
+    return dict(current_lang=session.get('lang', 'fr'))
+
 # Route pour changer la langue
 @app.route('/language/<lang>')
 def set_language(lang):
@@ -128,10 +133,32 @@ COMPETENCES = {
     "Collection de données": ["Web Scraping"]
 }
 
+PARCOURS = [
+    {
+        "titre": "IAD",
+        "etablissement": "INSI (Institut National Supérieur d’Informatique)",
+        "date": "2025 – Aujourd'hui",
+        "description": "Formation approfondie : Machine Learning (supervisé, non supervisé, GridSearchCV), Deep Learning (réseaux de neurones), analyse exploratoire de données (Pandas, NumPy), visualisation (Matplotlib, Seaborn, Plotly), et SQL/NoSQL.",
+    },
+    {
+        "titre": "ESIIA (Electronique Système Informatique et Intelligence Artificielle)",
+        "etablissement": "ISPM Antsobolo – Institut Supérieur Polytechnique de Madagascar",
+        "date": "2021 – 2023",
+        "description": "Cursus technique et scientifique complet : systèmes embarqués, robotique, assembleur, électronique, Java, Arduino. Développement de l’autonomie et de l’esprit d’innovation à travers des projets concrets.",
+        
+    },
+    {
+        "titre": "Baccalauréat Scientifique",
+        "etablissement": "Lycée Saint Pierre Canisus Ambohipo",
+        "date": "2021 – 2023",
+        "description": "Formation scientifique générale (mathématiques, physique,...). Diplôme obtenu.",
+        
+    }
+]
 # ========== ROUTES ==========
 @app.route("/")
 def index():
-    return render_template("index.html", projets=PROJETS, certifs=CERTIFICATIONS, competences=COMPETENCES, _=_)
+    return render_template("index.html", projets=PROJETS, certifs=CERTIFICATIONS, competences=COMPETENCES, parcours=PARCOURS, _=_)
 
 @app.route("/test")
 def test():

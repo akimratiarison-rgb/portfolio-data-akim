@@ -379,11 +379,11 @@ section h2::after {
 
       /* Certifications : titres et dates */
     #certifs h3 {
-        font-size: 1rem !important; /* titre de la certification */
+        font-size: 1rem !important; 
     }
     #certifs .text-gray-400,
     #certifs .text-muted {
-        font-size: 0.7rem !important; /* organisme et date */
+        font-size: 1rem !important; /* organisme et date */
     }
     /* Optionnel : réduction de la largeur des images */
     #certifs .w-12.h-12 {
@@ -942,6 +942,7 @@ footer {
     line-height: 1;
     margin-right: 0.5rem;
     text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-top: -0.19em;
 }
 
 /* Ajustements  */
@@ -960,4 +961,8 @@ footer {
         top: -1.5rem !important;
         opacity: 0.8 !important;
     }
+}
+
+.shadow-glow {
+    box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.3), 0 0 0 6px rgba(45, 212, 191, 0.1);
 }

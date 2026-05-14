@@ -101,7 +101,18 @@
         "Je": "Je",
         "Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact." : "Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact.",
         "Message envoyé ! Je vous répondrai rapidement.": "Message envoyé ! Je vous répondrai rapidement.",
-        "Erreur réseau. Veuillez réessayer.": "Erreur réseau. Veuillez réessayer."
+        "Erreur réseau. Veuillez réessayer.": "Erreur réseau. Veuillez réessayer.",
+        "IAD": "IAD",
+        "Baccalauréat Scientifique":"Baccalauréat Scientifique",
+        "Mon parcours": "Mon parcours",
+        "Parcours académique": "Parcours académique",
+        "INSI (Institut National Supérieur d’Informatique)": "INSI (Institut National Supérieur d’Informatique)",
+        "Formation approfondie : Machine Learning (supervisé, non supervisé, GridSearchCV), Deep Learning (réseaux de neurones), analyse exploratoire de données (Pandas, NumPy), visualisation (Matplotlib, Seaborn, Plotly), et SQL/NoSQL.": "Formation approfondie : Machine Learning (supervisé, non supervisé, GridSearchCV), Deep Learning (réseaux de neurones), analyse exploratoire de données (Pandas, NumPy), visualisation (Matplotlib, Seaborn, Plotly), et SQL/NoSQL.",
+        "ESIIA (Electronique Système Informatique et Intelligence Artificielle)": "ESIIA (Electronique Système Informatique et Intelligence Artificielle)",
+        "ISPM Antsobolo – Institut Supérieur Polytechnique de Madagascar": "ISPM Antsobolo – Institut Supérieur Polytechnique de Madagascar",
+        "Cursus technique et scientifique complet : systèmes embarqués, robotique, assembleur, électronique, Java, Arduino. Développement de l’autonomie et de l’esprit d’innovation à travers des projets concrets.": "Cursus technique et scientifique complet : systèmes embarqués, robotique, assembleur, électronique, Java, Arduino. Développement de l’autonomie et de l’esprit d’innovation à travers des projets concrets.",
+        "Lycée Saint Pierre Canisus Ambohipo": "Lycée Saint Pierre Canisus Ambohipo",
+        "Formation scientifique générale (mathématiques, physique,...). Diplôme obtenu.": "Formation scientifique générale (mathématiques, physique,...). Diplôme obtenu."
     },
     "en": {
         "Akim": "Akim",
@@ -204,7 +215,19 @@
         "Je": "I",
         "Mon approche est simple : rendre la donnée utile, compréhensible et orientée impact." : "My approach is simple: make data useful, understandable, and impact-oriented.",    
         "Message envoyé ! Je vous répondrai rapidement.": "Message sent! I will reply soon.",
-        "Erreur réseau. Veuillez réessayer.": "Network error. Please try again."
+        "Erreur réseau. Veuillez réessayer.": "Network error. Please try again.",  
+        "IAD": "IAD",
+        "Mon parcours": "My journey",
+        "Parcours académique": "Academic background",
+        "INSI (Institut National Supérieur d’Informatique)": "INSI (National Higher Institute of Informatics)",
+        "Formation approfondie : Machine Learning (supervisé, non supervisé, GridSearchCV), Deep Learning (réseaux de neurones), analyse exploratoire de données (Pandas, NumPy), visualisation (Matplotlib, Seaborn, Plotly), et SQL/NoSQL.": "Advanced training in Machine Learning (supervised, unsupervised, GridSearchCV), Deep Learning (neural networks), exploratory data analysis (Pandas, NumPy), visualization (Matplotlib, Seaborn, Plotly), and SQL/NoSQL.",
+        "ESIIA (Electronique Système Informatique et Intelligence Artificielle)": "ESIIA (Electronics Computer Systems and Artificial Intelligence)",
+        "ISPM Antsobolo – Institut Supérieur Polytechnique de Madagascar": "ISPM Antsobolo – Higher Polytechnic Institute of Madagascar",
+        "Cursus technique et scientifique complet : systèmes embarqués, robotique, assembleur, électronique, Java, Arduino. Développement de l’autonomie et de l’esprit d’innovation à travers des projets concrets.": "Complete technical and scientific curriculum: embedded systems, robotics, assembler, electronics, Java, Arduino. Development of autonomy and innovative spirit through concrete projects.",
+        "Lycée Saint Pierre Canisus Ambohipo": "Saint Pierre Canisus High School Ambohipo",
+        "Baccalauréat Scientifique":"Science Baccalaureate",
+        "Formation scientifique générale (mathématiques, physique,...). Diplôme obtenu.": "General scientific training (mathematics, physics, ...). Diploma obtained."
+
         
     }
 }

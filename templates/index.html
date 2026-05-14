@@ -85,7 +85,7 @@
 </section>
 
 <!-- Projets avec image à gauche -->
-<section id="projets" class="py-24 bg-transparent">
+<section id="projets" class="py-24 bg-transparent ">
     <div class="max-w-5xl mx-auto px-6 md:px-12">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-bold mb-4">{{ _('Projets') }}</h2>
@@ -112,7 +112,7 @@
                             {% endfor %}
                         </div>
                         <a href="{{ projet.lien }}" class="inline-flex items-center gap-2 text-accent hover:gap-3 transition-all">{{ _('Explorer') }}</a>
-                        <img src="{{ url_for('static', filename='images/oeil.gif') }}" alt="{{ _('icône animée') }}" class="w-5 h-5 inline-block rounded-full">
+                        <img src="{{ url_for('static', filename='images/oeil.gif') }}" alt="{{ _('icône animée') }}" class="w-7 h-7 inline-block rounded-full">
                     </div>
                 </div>
             </div>
@@ -121,11 +121,44 @@
     </div>
 </section>
 
+
+<section id="parcours" class="py-20 reveal">
+    <div class="text-center mb-16">
+        <span class="text-accent font-mono text-sm uppercase tracking-wider">{{ _('Mon parcours') }}</span>
+        <h2 class="text-4xl md:text-5xl font-bold mt-2">{{ _('Parcours académique') }}</h2>
+    </div>
+
+    <div class="max-w-5xl mx-auto">
+        <div class="relative pl-6 md:pl-12 border-l-2 border-accent/30 space-y-12">
+            {% for item in parcours %}
+            <div class="relative group">
+                <div class="absolute -left-[2.1rem] md:-left-[3rem] top-0 w-10 h-10 rounded-full bg-accent/10 border-2 border-accent/30 text-white flex items-center justify-center text-sm font-bold transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow">
+                    {{ '%02d' % loop.index }}
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-9 transition-all duration-300 hover:border-accent/40 hover:shadow-xl">
+                    <div class="flex justify-between items-start gap-4 mb-3">
+                        <h3 class="text-xl md:text-2xl font-bold group-hover:text-accent transition">{{ _(item.titre) }}</h3>
+                        <span class="text-xs font-mono px-3 py-1 rounded-full text-white border border-accent/30 whitespace-nowrap">{{ item.date }}</span>
+                    </div>
+                    <p class="text-accent/80 text-sm font-bold mb-3">{{ _(item.etablissement) }}</p>
+                    <p class="text-white/70 leading-relaxed">{{ _(item.description) }}</p>
+                    <div class="mt-5 text-right ">
+                    <img src="{{ url_for('static', filename='images/etude.gif') }}" alt="{{ _('icône animée') }}" class="w-14 h-14 inline-block rounded-full">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+   
+</section>
+
+
 <!-- Certifications -->
 <section id="certifs" class="py-20 bg-gradient-to-b from-white/10 to-transparent rounded-3xl reveal">
     <div class="max-w-6xl mx-auto px-6 md:px-12">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">{{ _('Certifications') }}</h2>
-        <p class="text-center text-gray-400 mb-10 max-w-2xl mx-auto text-xl font-bold">{{ _('Des compétences validées par des organismes reconnus') }}</p>
+        <p class=" text-center text-gray-400 mb-10 max-w-2xl mx-auto text-xl font-bold">{{ _('Des compétences validées par des organismes reconnus') }}</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for certif in certifs %}
@@ -153,7 +186,6 @@
     </div>
 </section>
 
-<!-- Technologies & outils -->
 <!-- Technologies & outils -->
 <section id="tech-outils" class="py-20">
     <div class="max-w-5xl mx-auto px-6 md:px-12">
@@ -294,7 +326,6 @@
                             <a href="https://www.linkedin.com/in/akim-ratiarison" class="text-gray-400 hover:text-accent transition"><i class="fab fa-linkedin fa-lg"></i></a>
                             <a href="https://github.com/akimratiarison-rgb" class="text-gray-400 hover:text-accent transition"><i class="fab fa-github fa-lg"></i></a>
                             <a href="https://t.me/AkiiimR" class="text-gray-400 hover:text-accent transition"><i class="fab fa-telegram fa-lg"></i></a>
-                            <a href="https://wa.me/261384906635" class="text-gray-400 hover:text-accent transition">  <i class="fab fa-whatsapp fa-lg"></i></a>
                         </div>
                     </div>
                 </div>
@@ -323,7 +354,7 @@
                     <span>{{ _('Envoyer le message') }}</span>
                 </button>
             </form>
-            
+
             <div id="form-status" class="mt-4 text-center text-sm"></div>
         </div>
     </div>

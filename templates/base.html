@@ -53,22 +53,46 @@
                 <a id="lang-btn" class="absolute ml-1 px-1 py-1 rounded-full transition clignoteVert"></a>
             </div>
             <div class="hidden md:flex gap-8 text-sm uppercase tracking-wide items-center">
-            <a href="#hero" class="nav-link">{{ _('Accueil') }}</a>
-            <a href="#projets" class="nav-link">{{ _('Projets') }}</a>
-            <a href="#certifs" class="nav-link">{{ _('Certifications') }}</a>
-            <a href="#contact" class="nav-link">{{ _('Contact') }}</a>
-            <div class="flex gap-2 ml-4 items-center">
-                <a href="{{ url_for('set_language', lang='fr') }}" class="inline-flex items-center gap-1 hover:opacity-80 transition">
-                    <img src="{{ url_for('static', filename='saina/fr.png') }}" alt="Français" class="w-5 h-5 object-cover rounded-sm">
-                    <span class="text-sm">FR</span>
-                </a>
-                <span class="text-gray-500">|</span>
-                <a href="{{ url_for('set_language', lang='en') }}" class="inline-flex items-center gap-1 hover:opacity-80 transition">
-                    <img src="{{ url_for('static', filename='saina/gb.png') }}" alt="Anglais" class="w-5 h-5 object-cover rounded-sm">
-                    <span class="text-sm">EN</span>
-                </a>
+                <a href="#hero" class="nav-link">{{ _('Accueil') }}</a>
+                <a href="#projets" class="nav-link">{{ _('Projets') }}</a>
+                <a href="#certifs" class="nav-link">{{ _('Certifications') }}</a>
+                <a href="#contact" class="nav-link">{{ _('Contact') }}</a>
+                <div class="flex gap-2 ml-4 items-center">
+                    <a href="{{ url_for('set_language', lang='fr') }}" class="inline-flex items-center gap-1 hover:opacity-80 transition">
+                        <img src="{{ url_for('static', filename='saina/fr.png') }}" alt="Français" class="w-5 h-5 object-cover rounded-sm">
+                        <span class="text-sm">FR</span>
+                    </a>
+                    <span class="text-gray-500">|</span>
+                    <a href="{{ url_for('set_language', lang='en') }}" class="inline-flex items-center gap-1 hover:opacity-80 transition">
+                        <img src="{{ url_for('static', filename='saina/gb.png') }}" alt="Anglais" class="w-5 h-5 object-cover rounded-sm">
+                        <span class="text-sm">EN</span>
+                    </a>
+                </div>
             </div>
-        </div>
+            
+            <!-- Sélecteur de langue mobile (dropdown) -->
+            <div class="relative md:hidden">
+                <button id="lang-dropdown-btn" class="flex items-center gap-1 text-gray-300 hover:text-accent transition">
+                    {% if current_lang == 'fr' %}
+                        <img src="{{ url_for('static', filename='saina/fr.png') }}" alt="FR" class="w-5 h-5 object-cover rounded-sm">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='saina/gb.png') }}" alt="EN" class="w-5 h-5 object-cover rounded-sm">
+                    {% endif %}
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-32 bg-dark/35 backdrop-blur-md border border-white/10 rounded-lg shadow-lg z-50">
+                    <a href="{{ url_for('set_language', lang='fr') }}" class="flex items-center gap-2 px-4 py-2 text-sm hover:bg-accent/20 transition">
+                        <img src="{{ url_for('static', filename='saina/fr.png') }}" class="w-5 h-5 rounded-sm"> Français
+                    </a>
+                    <a href="{{ url_for('set_language', lang='en') }}" class="flex items-center gap-2 px-4 py-2 text-sm hover:bg-accent/20 transition">
+                        <img src="{{ url_for('static', filename='saina/gb.png') }}" class="w-5 h-5 rounded-sm"> English
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bouton burger -->
             <button id="menu-btn" class="md:hidden text-gray-300 focus:outline-none">
                 <div class="hamburger-icon">
                     <span></span>
@@ -77,24 +101,13 @@
                 </div>
             </button>
         </div>
-        <!-- Menu mobile -->
+
+        <!-- Menu mobile (liens sans drapeaux) -->
         <div id="mobile-menu" class="hidden md:hidden bg-dark/35 backdrop-blur-md border-t border-white/5 py-3 text-center flex flex-col gap-2">
             <a href="#hero" class="nav-link block py-2">{{ _('Accueil') }}</a>
             <a href="#projets" class="nav-link block py-2">{{ _('Projets') }}</a>
             <a href="#certifs" class="nav-link block py-2">{{ _('Certifications') }}</a>
             <a href="#contact" class="nav-link block py-2">{{ _('Contact') }}</a>
-            
-            <div class="flex justify-center gap-4 items-center pt-3 mt-1 border-t border-white/10">
-                <a href="{{ url_for('set_language', lang='fr') }}" class="inline-flex items-center gap-1 hover:opacity-80 transition">
-                    <img src="{{ url_for('static', filename='saina/fr.png') }}" alt="Français" class="w-5 h-5 object-cover rounded-sm">
-                    <span class="text-sm">FR</span>
-                </a>
-                <span class="text-gray-500">|</span>
-                <a href="{{ url_for('set_language', lang='en') }}" class="inline-flex items-center gap-1 hover:opacity-80 transition">
-                    <img src="{{ url_for('static', filename='saina/gb.png') }}" alt="English" class="w-5 h-5 object-cover rounded-sm">
-                    <span class="text-sm">EN</span>
-                </a>
-            </div>
         </div>
     </nav>
 
@@ -120,7 +133,7 @@
                         <i class="fas fa-phone-alt text-2xl"></i>
                     </a>
                     <a href="https://t.me/AkiiimR" class="text-gray-400 hover:text-accent transition"><i class="fab fa-telegram text-2xl"></i></a>
-                    <a href="https://wa.me/261384906635" class="text-gray-400 hover:text-accent transition">  <i class="fab fa-whatsapp text-2xl"></i></a>
+                    <a href="https://wa.me/261384906635" class="text-gray-400 hover:text-accent transition"><i class="fab fa-whatsapp text-2xl"></i></a>
                 </div>
             </div>
         </div>
