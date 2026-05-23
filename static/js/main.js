@@ -1,4 +1,4 @@
-// ========== COULEUR DES LIENS AU SCROLL (sans toucher au fond) ==========
+// COULEUR DES LIENS AU SCROLL 
 const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 
@@ -19,7 +19,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ========== TYPING EFFECT (hero) ==========
+//  TYPING EFFECT 
 const typedWords = [' Python & SQL.', ' Google Analytics.', 'Looker Studio.', 'Machine Learning.'];
 let wordIndex = 0;
 let indexeo = 0;
@@ -64,7 +64,7 @@ if (typedElement) {
     typeEffect();
 }
 
-// ========== MOBILE MENU ==========
+//  MOBILE MENU 
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 if (menuBtn && mobileMenu) {
@@ -80,7 +80,7 @@ if (menuBtn && mobileMenu) {
     });
 }
 
-// ========== SMOOTH SCROLL ==========
+//  SMOOTH SCROLL 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const target = document.querySelector(this.getAttribute('href'));
@@ -93,7 +93,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 
 
-// ========== ANIMATED COUNTERS (mobile = scroll, desktop = 2s) ==========
+//  ANIMATED COUNTERS 
 function animateCounters() {
     const stats = document.querySelectorAll('.stat-number');
     const targets = Array.from(stats).map(stat => parseInt(stat.dataset.target));
@@ -143,7 +143,7 @@ if (isMobile) {
     });
 }
 
-// ========== REVEAL ON SCROLL ==========
+//  REVEAL ON SCROLL 
 const revealElements = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -157,7 +157,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.10 });
 revealElements.forEach(el => revealObserver.observe(el));
 
-// ========== TYPING POUR LA SECTION À PROPOS (avec swing) ==========
+// TYPING POUR LA SECTION À PROPOS 
 function initAProposTyping() {
     const section = document.querySelector('#a-propos');
     if (!section) return;
@@ -223,12 +223,12 @@ function typeParagraphs(paragraphs, index) {
                 typeParagraphs(paragraphs, index + 1);
             }, 300);
         }
-    }, 25);   // ← ralentissement : 80 ms par lettre (au lieu de 50)
+    }, 25);   //  ralentissement : 80 ms par lettre
 }
 
 document.addEventListener('DOMContentLoaded', initAProposTyping);
 
-// ========== MODEL ACCURACY WIDGET ==========
+//  MODEL ACCURACY WIDGE
 function initModelAccuracy() {
     const accuracySection = document.querySelector('.model-accuracy');
     if (!accuracySection) return;
@@ -262,12 +262,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initModelAccuracy();
 });
 
-// Reveal zigzag pour Technologies & outils (réactif au scroll)
+// Reveal zigzag pour Technologies & outils 
 function initTechZigzagReveal() {
     const items = document.querySelectorAll('.zigzag-reveal');
     if (!items.length) return;
 
-    // Appliquer la direction d’animation (gauche / droite)
+    // Appliquer la direction d’animation 
     items.forEach((item, idx) => {
         if (idx % 2 === 0) {
             item.classList.add('from-left');
@@ -276,7 +276,7 @@ function initTechZigzagReveal() {
         }
     });
 
-    // Observateur qui ajoute/retire la classe ‘revealed’ à chaque entrée/sortie
+    // Observateur qui ajoute/retire la classe ‘revealed
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -292,7 +292,7 @@ function initTechZigzagReveal() {
 
 document.addEventListener('DOMContentLoaded', initTechZigzagReveal);
 
-// === FAUX CHARGEMENT (simulation) ===
+// FAUX CHARGEMENT
 window.addEventListener('load', function() {
     const loader = document.getElementById('charger');
     if (loader) {
@@ -302,12 +302,12 @@ window.addEventListener('load', function() {
     setTimeout(() => {
         loader.style.display = 'none';
     }, 500);
-}, 2000);
+}, 1000);
     }
 });
 
 
-// ========== ENVOI FORMULAIRE DE CONTACT ==========
+//  ENVOI FORMULAIRE DE CONTACT 
 const contactForm = document.getElementById('contact-form');
 const statusDiv = document.getElementById('form-status');
 
@@ -320,7 +320,7 @@ if (contactForm) {
         const subject = document.getElementById('contact-subject').value.trim();
         const message = document.getElementById('contact-message').value.trim();
         
-        // Messages traduits (depuis window.formMessages défini dans le template)
+        // Messages traduits 
         const msgs = window.formMessages || {
             required: "Tous les champs sont obligatoires.",
             success: "Message envoyé ! Je vous répondrai rapidement.",
@@ -371,7 +371,7 @@ if (contactForm) {
 
 
 
-// Gestion du dropdown de langue (mobile)
+// Gestion du dropdown de langue 
 const langBtn = document.getElementById('lang-dropdown-btn');
 const langMenu = document.getElementById('lang-dropdown-menu');
 

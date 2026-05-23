@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-# ========== CONFIGURATION GÉNÉRALE ==========
+# CONFIGURATION GÉNÉRALE 
 app.config['SECRET_KEY'] = 'ma-super-cle-secrete-pour-session'  # nécessaire pour la session
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
@@ -16,7 +16,7 @@ app.config['MAIL_DEFAULT_SENDER'] = 'tratiarisonakiim@gmail.com'
 
 mail = Mail(app)
 
-# ========== SYSTÈME DE TRADUCTION (JSON) – avec chemin absolu ==========
+#  SYSTÈME DE TRADUCTION 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 translations_path = os.path.join(BASE_DIR, 'translations.json')
 
@@ -32,7 +32,7 @@ def _(text):
     lang = session.get('lang', 'fr')
     return translations.get(lang, {}).get(text, text)
 
-# ========== CONTEXT PROCESSOR pour la langue active ==========
+#  CONTEXT PROCESSOR pour la langue active
 @app.context_processor
 def inject_current_lang():
     return dict(current_lang=session.get('lang', 'fr'))
@@ -44,7 +44,7 @@ def set_language(lang):
         session['lang'] = lang
     return redirect(request.referrer or url_for('index'))
 
-# ========== DONNÉES ==========
+# MES DONNÉES 
 PROJETS = [
     {
         "titre": "Ohatra oa",
@@ -155,7 +155,7 @@ PARCOURS = [
         
     }
 ]
-# ========== ROUTES ==========
+#  ROUTES 
 @app.route("/")
 def index():
     return render_template("index.html", projets=PROJETS, certifs=CERTIFICATIONS, competences=COMPETENCES, parcours=PARCOURS, _=_)

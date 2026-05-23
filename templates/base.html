@@ -82,7 +82,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-32 bg-dark/35 backdrop-blur-md border border-white/10 rounded-lg shadow-lg z-50">
+                <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-32 bg-dark/35  border border-white/10 rounded-xl shadow-lg z-50">
                     <a href="{{ url_for('set_language', lang='fr') }}" class="flex items-center gap-2 px-4 py-2 text-sm hover:bg-accent/20 transition">
                         <img src="{{ url_for('static', filename='saina/fr.png') }}" class="w-5 h-5 rounded-sm"> Français
                     </a>
@@ -103,7 +103,7 @@
         </div>
 
         <!-- Menu mobile (liens sans drapeaux) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-dark/35 backdrop-blur-md border-t border-white/5 py-3 text-center flex flex-col gap-2">
+        <div id="mobile-menu" class="hidden md:hidden  backdrop-blur-md border-t border-white/5 py-3 text-center flex flex-col gap-2">
             <a href="#hero" class="nav-link block py-2">{{ _('Accueil') }}</a>
             <a href="#projets" class="nav-link block py-2">{{ _('Projets') }}</a>
             <a href="#certifs" class="nav-link block py-2">{{ _('Certifications') }}</a>
