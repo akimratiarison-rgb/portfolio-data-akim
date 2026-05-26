@@ -44,7 +44,7 @@
         </div>
     </div>
 </div>
-    <a href="#projets" class="inline-flex items-center gap-2 bg-accent/10 backdrop-blur-lg border border-accent/30 text-white px-6 py-3 rounded-full hover:bg-accent/20 hover:scale-105 hover:shadow-sm hover:shadow-accent/20 transition-all duration-300">
+    <a href="#projets" class="inline-flex items-center gap-2 bg-accent text-black/70 px-6 py-3 rounded-full hover:bg-accent-dark transition shadow-md justify-center">
       {{ _('Voir les projets') }}
       <svg class="w-5 h-8 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
     </a>
@@ -63,7 +63,7 @@
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(50,212,191,0.06),transparent_60%)] pointer-events-none"></div>
     <div class="tady-cv"></div>
     <div class="cv-button-wrapper">
-        <a href="{{ url_for('static', filename='files/CV_Akim.pdf') }}" download class="cv-button inline-flex items-center gap-3 bg-accent/10 backdrop-blur-sm border border-accent/30 text-gray px-8 py-4 rounded-full hover:bg-accent/20 transition-all duration-300 text-lg font-semibold">
+        <a href="{{ url_for('static', filename='files/CV_Akim.pdf') }}" download class="cv-button inline-flex items-center gap-2 bg-accent text-black/70 px-6 py-3 rounded-full hover:bg-accent-dark transition shadow-md justify-center">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 4h16v16H4V4z" /></svg>
             {{ _('Télécharger mon CV') }}
         </a>
