@@ -11,7 +11,7 @@ Ce site présente mes projets, mes certifications et mes compétences en analyse
 
 - **Backend** : Flask (Python)
 - **Frontend** : HTML5 / Tailwind CSS / JavaScript
-- **Déploiement** : Render
+- **Déploiement** : Render et Vercel
 - **Icônes** : FontAwesome
 - **Polices** : Google Fonts (Inter, IBM Plex Mono, Bebas Neue)
 
